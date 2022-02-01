@@ -1,6 +1,5 @@
-package chapter2.item1;
+package item1;
 
-import org.assertj.core.util.Lists;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,7 +11,7 @@ import java.util.stream.Collectors;
  * date : 2022/01/29
  * description :
  */
-public class Wine<T> {
+public class Wine {
     private static Wine instance;
     private Locale locale;
     private final String name;
@@ -67,6 +66,14 @@ public class Wine<T> {
 
     public static Wine newInstance(Locale locale, String name) {
         return new Wine(locale, name);
+    }
+
+    public static Wines getList(ArrayList<Wine> wineList) {
+        return Wines.valueOf(wineList);
+    }
+
+    public static Wines newList(ArrayList<Wine> wineList) {
+        return Wines.valueOf(wineList);
     }
 
     public boolean checkName(String checkName) {

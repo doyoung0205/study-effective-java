@@ -1,11 +1,16 @@
 package chapter2.item1;
 
+import item1.DayOfWeek;
+import item1.Wine;
+import item1.Wines;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -56,7 +61,17 @@ public class StaticFactoryMethodTest {
     }
 
     @Test
-    @DisplayName("valueOf는 from과 to의 더 자세한 버전이다.")
+    @DisplayName("EnumSet을 사용한 of Method 예시")
+    public void ofMethodExample() {
+        // given
+        final EnumSet<DayOfWeek> weekend = EnumSet.of(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY);
+
+        // then
+        assertThat(weekend).hasSize(2);
+    }
+
+    @Test
+    @DisplayName("valueOf는 매개변수와 값이 같은 인스턴스를 반환한다.")
     public void valueOfTest() {
         // given
         Wine wine = Wine.valueOf(Locale.US, "SUBMISSION");
@@ -95,16 +110,45 @@ public class StaticFactoryMethodTest {
     }
 
     @Test
-    @DisplayName("getType은 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 사용한다")
-    public void getType() throws NoSuchFieldException {
+    @DisplayName("getType은 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 사용한다(getInstance와 같음)")
+    public void getType() {
+        // given
+        final ArrayList<Wine> wineList = Lists.newArrayList(Wine.getInstance(Locale.KOREA, "맥주"), Wine.getInstance(Locale.KOREA, "소주"));
+
+        // when
+        Wines wines = Wine.getList(wineList);
+
         // then
-        final Field field = Wine.class.getDeclaredField("locale");
-
-
-
+        assertThat(wines.has(Wine.valueOf(Locale.KOREA, "맥주"))).isTrue();
+        assertThat(wines.size()).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("newType은 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 사용한다(newInstance와 같음)")
+    public void newType() {
+        // given
+        final ArrayList<Wine> wineList = Lists.newArrayList(Wine.newInstance(Locale.KOREA, "맥주"), Wine.newInstance(Locale.KOREA, "소주"));
 
+        // when
+        Wines wines = Wine.newList(wineList);
 
+        // then
+        assertThat(wines.has(Wine.valueOf(Locale.KOREA, "맥주"))).isTrue();
+        assertThat(wines.size()).isEqualTo(2);
+    }
 
+    @Test
+    @DisplayName("Collections 프레임워크에서 사용한 type 예시 ")
+    public void typeMethodExample() {
+        // given
+        final Vector<DayOfWeek> collect = Arrays.stream(DayOfWeek.values()).
+                collect(Collectors.toCollection(Vector::new));
+
+        // when
+        Enumeration e = collect.elements();
+        final ArrayList list = Collections.list(e);
+
+        // then
+        assertThat(list).hasSize(7);
+    }
 }
