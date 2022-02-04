@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * description :
  */
 @DisplayName("정적 팩토리 메서드 테스트")
-public class StaticFactoryMethodTest {
+public class Item1Test {
     @Test
     @DisplayName("생성자를 통해 객체 생성하기")
     public void createWineByConstructor() {
