@@ -10,15 +10,15 @@ public class Lotto {
     private final int lottoNumber;
 
     private Lotto(int lottoNumber) {
+        if (!validate(lottoNumber)) {
+            throw new IllegalArgumentException("잘못된 로또 번호 입니다.");
+        }
+
         System.out.println("Lotto 객체 생성 lottoNumber = " + lottoNumber);
         this.lottoNumber = lottoNumber;
     }
 
     public static Lotto getInstance(int lottoNumber) {
-        if (!validate(lottoNumber)) {
-            throw new IllegalArgumentException("잘못된 로또 번호 입니다.");
-        }
-
         if (LottoCache.containsKey(lottoNumber)) {
             return LottoCache.get(lottoNumber);
         }
