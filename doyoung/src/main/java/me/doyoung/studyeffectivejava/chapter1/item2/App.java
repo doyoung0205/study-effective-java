@@ -11,13 +11,23 @@ public class App {
                 .noMoreVegetablesPlease()
                 .build();
 
+        SandwichStepBuilder.builder()
+                .sandwichCalled("subway sandwich")
+                .breadType("")
+                .meat("")
+                .withCheese("모짜렐라")
+                .noVegetablesPlease()
+                .build();
 
         System.out.println("sandwich = " + sandwich);
 
-
-        SandwichBuilder.builder()
-                .breadType("baguette")
+        final Sandwich sandwichWithBuilder = SandwichBuilder.builder()
+                .breadType("ㅁㄴㅇ")
+                .withCheese("모짜렐라")
+                .withMeat("")
                 .build();
+
+        SandwichWithBuilderAnnotation.builder();
 
     }
 }
