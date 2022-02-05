@@ -1,8 +1,5 @@
 package chapter2.item1;
 
-import item1.DayOfWeek;
-import item1.Wine;
-import item1.Wines;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +10,7 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * packageName : chapter2.item1
+ * packageName : chapter2.chapter2.item1
  * fileName : Test
  * author : haedoang
  * date : 2022/01/29

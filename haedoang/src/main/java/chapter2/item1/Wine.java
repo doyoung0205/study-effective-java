@@ -1,13 +1,13 @@
 
 
-package item1;
+package chapter2.item1;
 
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * packageName : chapter2.item1
+ * packageName : chapter2.chapter2.item1
  * fileName : Wine
  * author : haedoang
  * date : 2022/01/29

@@ -1,4 +1,4 @@
-package item1;
+package chapter2.item1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 /**
- * packageName : item1
+ * packageName : chapter2.item1
  * fileName : DriverManager
  * author : haedoang
  * date : 2022/02/01

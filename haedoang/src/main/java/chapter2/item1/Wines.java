@@ -1,10 +1,10 @@
-package item1;
+package chapter2.item1;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * packageName : item1
+ * packageName : chapter2.item1
  * fileName : Wines
  * author : haedoang
  * date : 2022/02/01

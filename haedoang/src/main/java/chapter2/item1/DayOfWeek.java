@@ -1,7 +1,7 @@
-package item1;
+package chapter2.item1;
 
 /**
- * packageName : item1
+ * packageName : chapter2.item1
  * fileName : DayOfWeek
  * author : haedoang
  * date : 2022/02/01
