@@ -28,6 +28,5 @@ public class App {
                 .build();
 
         SandwichWithBuilderAnnotation.builder();
-
     }
 }

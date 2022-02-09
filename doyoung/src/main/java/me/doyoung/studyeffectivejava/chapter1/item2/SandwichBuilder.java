@@ -18,7 +18,7 @@ public class SandwichBuilder {
         return new SandwichBuilder();
     }
 
-    public SandwichBuilder paninoCalled(String name) {
+    public SandwichBuilder sandwichCalled(String name) {
         this.name = name;
         return this;
     }

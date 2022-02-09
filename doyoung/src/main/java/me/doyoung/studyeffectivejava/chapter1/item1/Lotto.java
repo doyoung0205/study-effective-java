@@ -9,6 +9,7 @@ public class Lotto {
     private static final int MAX = 45;
     private final int lottoNumber;
 
+
     private Lotto(int lottoNumber) {
         if (!validate(lottoNumber)) {
             throw new IllegalArgumentException("잘못된 로또 번호 입니다.");
