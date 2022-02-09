@@ -17,25 +17,5 @@ public class RomanNumerals {
     static boolean isRomanNumeralFast(String s) {
         return ROMAN.matcher(s).matches();
     }
-
-    public static void main(String[] args) {
-        int numSets = Integer.parseInt(args[0]);
-        int numReps = Integer.parseInt(args[1]);
-        boolean b = false;
-
-        for (int i = 0; i < numSets; i++) {
-            long start = System.nanoTime();
-            for (int j = 0; j < numReps; j++) {
-                // 성능 차이를 확인하려면 xxxSlow 메서드를 xxxFast 메서드로 바꿔 실행해보자.
-                b ^= isRomanNumeralSlow("MCMLXXVI");
-            }
-            long end = System.nanoTime();
-            System.out.println(((end - start) / (1_000. * numReps)) + " μs.");
-        }
-
-        // VM이 최적화하지 못하게 막는 코드
-        if (!b)
-            System.out.println();
-    }
 }
 
