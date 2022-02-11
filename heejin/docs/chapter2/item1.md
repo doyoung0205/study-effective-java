@@ -1,8 +1,10 @@
 # 객체 생성과 파괴
 
 [아이템 1. 생성자 대신 정적 팩터리 메서드를 고려하라](#생성자-대신-정적-팩터리-메서드를-고려하라)  
-[▪️ 정적 팩터리 메서드의 장점](#정적-팩터리-메서드의-장점)  
-[▪️ 정적 팩터리 메서드의 단점](#정적-팩터리-메서드의-단점)
+[- 정적 팩터리 메서드의 장점](#정적-팩터리-메서드의-장점)  
+[- 정적 팩터리 메서드의 단점](#정적-팩터리-메서드의-단점)
+
+<br>
 
 ## 생성자 대신 정적 팩터리 메서드를 고려하라
 
@@ -11,7 +13,7 @@
   (여기서, 정적 팩터리 메서드는 디자인 패턴에서의 팩터리 메서드와 다르다.)
 - 클래스는 public 생성자 대신 (혹은 생성자와 함께) 정적 책터리 메서드를 제공할 수 있다.
 
-### ▪️ 정적 팩터리 메서드의 장점
+### 정적 팩터리 메서드의 장점
 
 1. 이름을 가질 수 있다.
     - 생성자의 매개변수와 생성자 자체만으로는 반환될 객체의 특성을 제대로 설명하지 못한다.
@@ -134,7 +136,7 @@
         - 의존 객체 주입(DI) 프레임워크도 서비스 제공자라고 생각할 수 있다.
         - 자바 6부터는 `java.util.ServiceLoader`라는 범용 서비스 제공자 프레임워크가 제공되어 프레임워크를 직접 만들 필요가 거의 없어졌다.
 
-### ▪️ 정적 팩터리 메서드의 단점
+### 정적 팩터리 메서드의 단점
 
 1. 상속을 하려면 public이나 protected 생성자가 필요한데, 정적 팩터리 메서드만 제공하면 하위 클래스를 만들 수 없다.
    - 어찌보면 이 제약은 상속보다 컴포지션을 사용하도록 유도하고 불변 타입으로 만들려면 이 제약을 지켜야 한다는 점에서 오히려 장점으로 받아들일 수도 있다.
@@ -143,37 +145,21 @@
     - 생성자처럼 API 설명에 명확히 드러나지 않으니, API 문서에 정적 팩터리 방식 클래스를 인스턴스화 할 방법을 정리한다.
     - 정적 팩터리 메서드 이름을 널리 알려진 규약을 따라 짓는 식으로 문제를 완화한다.
       - `from`: 매개변수를 하나 받아서 해당 타입의 인스턴스를 반환   
-        ```java
-        Date d = Date.from(instant);
-        ```
+        `Date d = Date.from(instant);`
       - `of`: 여러 매개변수를 받아 적합한 타입의 인스턴스를 반환  
-        ```java
-        Set<Rank> faceCards = EnumSet.of(JACK, QUEEN, KING);
-        ```
+        `Set<Rank> faceCards = EnumSet.of(JACK, QUEEN, KING);`
       - `valueOf`: from과 of의 더 자세한 버전  
-        ```java
-        BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);
-        ```
+        `BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);`
       - `instance 혹은 getInstance`: 매개변수로 명시한 인스턴스를 반환하지만, 같은 인스턴스임을 보장하지는 않음  
-        ```java
-        StackWalker luke = StackWalker.getInstace(options);
-        ```
+        `StackWalker luke = StackWalker.getInstace(options);`
       - `create 혹은 newInstance`: instance 혹은 getInstance와 같지만, 매번 새로운 인스턴스를 생성해 반환함을 보장  
-        ```java
-        Object newArray = Array.newInstance(classObject, arrayLen);
-        ```
+        `Object newArray = Array.newInstance(classObject, arrayLen);`
       - `getType`: getInstace와 같으나, 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 사용  
-        ```java
-        FileStore fs = Files.getFileStore(path);
-        ``` 
+        `FileStore fs = Files.getFileStore(path);` 
       - `newType`: newInstance와 같으나, 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 떄 사용  
-        ```java
-        BufferedReader br = Files.newBufferedReader(path);
-        ``` 
+        `BufferedReader br = Files.newBufferedReader(path);` 
       - `type`: getType과 newType의 간결한 버전  
-        ```java
-        List<Complaint> litany = Collections.list(legacyLitany);
-        ```
+        `List<Complaint> litany = Collections.list(legacyLitany);`
 
         
 <br>
