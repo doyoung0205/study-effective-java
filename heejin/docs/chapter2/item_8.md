@@ -24,11 +24,6 @@
 
 ### finalizer와 cleaner의 문제점
 
-<br>
-
-
-### finalizer와 cleaner의 문제점
-
 - **`finalizer`와 `cleaner`는 즉시 수행된다는 보장이 없다.**  
   **→ 즉, `finalizer`와 `cleaner`로 제때 실행되어야 하는 작업은 절대 할 수 없다.**
 
@@ -111,8 +106,6 @@
   - `Adult` 클래스의 `cleanRoom` 메서드를 호출하면 `Cleaner`의 `clean` 메서드가 호출된다.
   - `Teenager` 클래스의 `cleanRoom` 메서드를 호출하면 `Cleaner`의 `clean` 메서드가 호출되지 않는다. `Cleaner`가 언제 호출될지 예상할 수 없다.
   
-=======
-  
   <br>
   
   ```java
@@ -136,26 +129,6 @@
   - `Adult` 클래스의 `cleanRoom` 메서드를 호출하면 `Cleaner`의 `clean` 메서드가 호출된다.
   - `Teenager` 클래스의 `cleanRoom` 메서드를 호출하면 `Cleaner`의 `clean` 메서드가 호출되지 않는다. `Cleaner`가 언제 호출될지 예상할 수 없다.
   
-
-<br>
-
-
-### finalizer와 cleaner를 사용하려는 경우  
-
-(1) 자원의 소유자가 close 메서드를 호출하지 않는 것에 대한 안전망 역할
-  - 자바 라이브러리의 일부 클래스는 안전망 역할의 `finalizer`를 제공한다.  
-    `FileInputStream`, `FileOutputStream`, `ThreadPoolExecutor`가 대표적이다.
-  - 이런 안전망 역할의 `finalizer`를 작성할 때는 그만한 값어치가 있는지 심사숙고해야 한다.
-
-
-(2) 네이티브 피어와 연결된 객체에서 사용하는 경우
-  - 네이티브 피어란 일반 자바 객체가 네이티브 메서드를 통해 기능을 위임한 네이티브 객체를 말한다.
-  - 네이티브 피어는 자바 객체가 아니니 가비지 컬렉터는 그 존재를 알지 못한다.
-  - 단, 성능 저하를 감당할 수 있고, 네이티브 피어가 심각한 자원을 가지고 있지 않을 때에만 해당된다.
->>>>>>> d48438b (docs : edit post)
-
-<br>
-
 
 ### finalizer와 cleaner를 사용하려는 경우  
 
