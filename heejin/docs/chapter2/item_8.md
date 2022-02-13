@@ -108,7 +108,7 @@
   ```
   - `Adult` 클래스의 `cleanRoom` 메서드를 호출하면 `Cleaner`의 `clean` 메서드가 호출된다.
   - `Teenager` 클래스의 `cleanRoom` 메서드를 호출하면 `Cleaner`의 `clean` 메서드가 호출되지 않는다. `Cleaner`가 언제 호출될지 예상할 수 없다.
-  
+
 
 <br>
 

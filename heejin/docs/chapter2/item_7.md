@@ -59,6 +59,7 @@
     - `ScheduledThreadPoolExecutor` 같은 백그라운드 스레드를 활용하거나 캐시에 새 엔트리를 추가할 때 부수 작업으로 수행하는 방법이 있다.
     - `LinkedHashMap`은 `removeEldestEntry` 메서드를 써서 새 엔트리를 추가할 때 부수 작업을 수행하여 캐시를 청소한다. [(→ 예시)](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter2/Item7Test.java#LC50)
 
+
 ### 리스너
 리스너(listener) 혹은 콜백(callback)이라 부르는 것도 메모리 누수의 주범이다.
 - 클라이언트가 콜백을 등록만 하고 명확히 해지하지 않는다면, 뭔가 조치해주지 않는 한 콜백은 계속 쌓여갈 것이다.
