@@ -5,7 +5,6 @@
 [- AutoCloseable 사용](#AutoCloseable-사용)  
 [- finalizer와 cleaner를 사용하려는 경우](#finalizer와-cleaner를-사용하려는-경우)
 
-<br>
 
 ## finalizer와 cleaner 사용을 피하라
 
