@@ -20,7 +20,10 @@
     - 자바에서는 접근할 수 없게 된 객체를 회수하는 역할을 가비지 컬렉터가 담당한다.
     - C++의 파괴자는 비메모리 자원을 회수하는 용도로 쓰인다.
     - 자바에서는 `try-with-resource`와 `try-finally`를 사용해 해결한다.
-    
+
+
+<br>
+
 
 ### finalizer와 cleaner의 문제점
 
@@ -82,29 +85,6 @@
 
   - `State` 인스턴스는 절대로 `Room` 인스턴스를 참조해서는 안된다. `Room` 인스턴스를 참조할 경우 **순환참조**가 생겨 가비지 컬렉터가 `Room` 인스턴스를 회수해갈 기회가 오지 않는다.
   - 클라이언트가 모든 Room 생성을 `try-catch-resource` 블록으로 감쌌다면 자동 청소는 전혀 필요하지 않다.
-  
-  <br>
-  
-  ```java
-  public class Adult {
-      public void cleanRoom(int numberOfJunkPiles) {
-          try (Room myRoom = new Room(numberOfJunkPiles)) {
-              System.out.println("Adult 방 청소 완료!");
-          }
-      }
-  }
-  ```
-
-  ```java
-  public class Teenager {
-      public void cleanRoom(int numberOfJunkPiles) {
-          new Room(numberOfJunkPiles);
-          System.out.println("Teenager 방 청소 완료!");
-      }
-  }
-  ```
-  - `Adult` 클래스의 `cleanRoom` 메서드를 호출하면 `Cleaner`의 `clean` 메서드가 호출된다.
-  - `Teenager` 클래스의 `cleanRoom` 메서드를 호출하면 `Cleaner`의 `clean` 메서드가 호출되지 않는다. `Cleaner`가 언제 호출될지 예상할 수 없다.
   
   <br>
   
