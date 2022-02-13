@@ -1,8 +1,9 @@
 # 객체 생성과 파괴
 
-[아이템 8. finalizer와 cleaner 사용을 피하라](#finalizer와-cleaner-사용을-피하라)
-[- finalizer](#finalizer)
-[- cleaner](#cleaner)
+[아이템 8. finalizer와 cleaner 사용을 피하라](#finalizer와-cleaner-사용을-피하라)  
+[- finalizer와 cleaner의 문제점](#finalizer와-cleaner의-문제점)  
+[- AutoCloseable 사용](#AutoCloseable-사용)  
+[- finalizer와 cleaner를 사용하려는 경우](#finalizer와-cleaner를-사용하려는-경우)
 
 <br>
 
@@ -20,6 +21,8 @@
     - C++의 파괴자는 비메모리 자원을 회수하는 용도로 쓰인다.
     - 자바에서는 `try-with-resource`와 `try-finally`를 사용해 해결한다.
 
+
+### finalizer와 cleaner의 문제점
 
 - **`finalizer`와 `cleaner`는 즉시 수행된다는 보장이 없다.**  
   **→ 즉, `finalizer`와 `cleaner`로 제때 실행되어야 하는 작업은 절대 할 수 없다.**
@@ -49,21 +52,25 @@
     - final이 아닌 클래스를 `finalizer` 공격으로부터 방어하려면 아무 일도 하지 않는 `finalizer` 메서드를 만들고 final로 선언하자.
 
 
+### AutoCloseable 사용
+
 - 종료해야 할 자원(파일이나 스레드 등)을 담고 있는 객체의 클래스에서 `finalizer`나 `cleaner` 대신 `AutoCloseable`을 사용하면 된다.
     - `AutoCloseable`을 구현해주고, 클라이언트에서 인스턴스를 다 쓰고 나면 `colse` 메서드를 호출하면 된다.
     - 일반적으로 예외가 발생해도 제대로 종료되도록 `try-with-resource`를 사용해야 한다.
     - 또한, 각 인스턴스는 자신이 닫혔는지를 추적하는 것이 좋다.  
       `close` 메서드에서 이 객체는 더 이상 유효하지 않음을 필드에 기록하고, 다른 메서드는 이 필드를 검사해서 객체가 닫힌 후에 불렸다면 `IllefalStateExcaption`을 던지는 것이다.
-
+    
+    <br>
+  
     ```java
     private final State state; // 방의 상태. cleanable과 공유
     private final Cleaner.Cleanable cleanable;
-  
+    
     public Room(int numberOfJunkPiles) {
         this.state = new State(numberOfJunkPiles);
         this.cleanable = cleaner.register(this, state);
     }
-  
+    
     @Override
     public void close() {
         cleanable.clean();
@@ -72,7 +79,9 @@
 
     - `State` 인스턴스는 절대로 `Room` 인스턴스를 참조해서는 안된다. `Room` 인스턴스를 참조할 경우 **순환참조**가 생겨 가비지 컬렉터가 `Room` 인스턴스를 회수해갈 기회가 오지 않는다.
     - 클라이언트가 모든 Room 생성을 `try-catch-resource` 블록으로 감쌌다면 자동 청소는 전혀 필요하지 않다.
-
+    
+    <br>
+    
     ```java
     public class Adult {
         public void cleanRoom(int numberOfJunkPiles) {
@@ -95,16 +104,18 @@
     - `Teenager` 클래스의 `cleanRoom` 메서드를 호출하면 `Cleaner`의 `clean` 메서드가 호출되지 않는다. `Cleaner`가 언제 호출될지 예상할 수 없다.
 
 
-- `finalizer`나 `cleaner`를 사용하려는 경우  
-  (1) 자원의 소유자가 close 메서드를 호출하지 않는 것에 대한 안전망 역할
-    - 자바 라이브러리의 일부 클래스는 안전망 역할의 `finalizer`를 제공한다.  
-      `FileInputStream`, `FileOutputStream`, `ThreadPoolExecutor`가 대표적이다.
-    - 이런 안전망 역할의 `finalizer`를 작성할 때는 그만한 값어치가 있는지 심사숙고해야 한다.
+### finalizer와 cleaner를 사용하려는 경우  
 
-  (2) 네이티브 피어와 연결된 객체에서 사용하는 경우
-    - 네이티브 피어란 일반 자바 객체가 네이티브 메서드를 통해 기능을 위임한 네이티브 객체를 말한다.
-    - 네이티브 피어는 자바 객체가 아니니 가비지 컬렉터는 그 존재를 알지 못한다.
-    - 단, 성능 저하를 감당할 수 있고, 네이티브 피어가 심각한 자원을 가지고 있지 않을 때에만 해당된다.
+(1) 자원의 소유자가 close 메서드를 호출하지 않는 것에 대한 안전망 역할
+  - 자바 라이브러리의 일부 클래스는 안전망 역할의 `finalizer`를 제공한다.  
+    `FileInputStream`, `FileOutputStream`, `ThreadPoolExecutor`가 대표적이다.
+  - 이런 안전망 역할의 `finalizer`를 작성할 때는 그만한 값어치가 있는지 심사숙고해야 한다.
+
+
+(2) 네이티브 피어와 연결된 객체에서 사용하는 경우
+  - 네이티브 피어란 일반 자바 객체가 네이티브 메서드를 통해 기능을 위임한 네이티브 객체를 말한다.
+  - 네이티브 피어는 자바 객체가 아니니 가비지 컬렉터는 그 존재를 알지 못한다.
+  - 단, 성능 저하를 감당할 수 있고, 네이티브 피어가 심각한 자원을 가지고 있지 않을 때에만 해당된다.
 
 <br>
 
