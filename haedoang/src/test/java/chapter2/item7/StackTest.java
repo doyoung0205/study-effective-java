@@ -1,10 +1,8 @@
 package chapter2.item7;
 
-import chapter2.item7.Stack;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,7 +20,7 @@ class StackTest {
     @DisplayName("스택 기능 구현 테스트")
     public void stack() {
         // given
-        Stack stack = new Stack();
+        final Stack stack = new Stack();
 
         // when
         IntStream.range(0, 20)
