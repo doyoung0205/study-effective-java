@@ -90,17 +90,17 @@
       \- 각 하위 클래스의 빌더가 정의한 `build` 메서드는 해당 구체 하위 클래스를 반환하도록 선언한다.  
       \- 하위 클래스의 메서드가 상위 클래스의 메서드가 정의한 반환 타입이 아닌, 그 하위 타입을 반환하는 기능을 *공변반환 타이핑(covariant return typing)* 이라 한다.
   
-    ```java
-   NyPizza nyPizza = new NyPizza.Builder(SMALL)
-                                .addTopping(SAUSAGE)
-                                .addTopping(ONION)
-                                .build();
-
-   Calzone calzone = new Calzone.Builder()
-                           .addTopping(HAM)
-                           .sauceInside()
-                           .build();
-   ```
+      ```java
+      NyPizza nyPizza = new NyPizza.Builder(SMALL)
+                                   .addTopping(SAUSAGE)
+                                   .addTopping(ONION)
+                                   .build();
+   
+      Calzone calzone = new Calzone.Builder()
+                              .addTopping(HAM)
+                              .sauceInside()
+                              .build();
+      ```
   - 빌더 패턴은 상당히 유연하다.
   - 빌더 한나로 여러 객체를 순회하면서 만들 수 있고, 빌더에 넘기는 매개변수에 따라 다른 객체를 만들 수도 있다.
 
