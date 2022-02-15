@@ -44,7 +44,7 @@
        }
        ```
     - 같은 객체가 자주 요청되는 상황이라면 성능을 상당히 끌어올려 준다.
-    - 플라이웨이트 패턴도 이와 비슷한 기법이라 할 수 있다.
+    - [플라이웨이트](https://ko.wikipedia.org/wiki/%ED%94%8C%EB%9D%BC%EC%9D%B4%EC%9B%A8%EC%9D%B4%ED%8A%B8_%ED%8C%A8%ED%84%B4) 패턴도 이와 비슷한 기법이라 할 수 있다.
     - 반복되는 요청에 같은 객체를 반환하는 식으로 정적 팩터리 방식의 클래스는 언제 어느 인스턴스를 살아 있게 할지 통제할 수 있다.  
       이런 클래스를 인스턴스 통제 클래스라고 한다.  
       인스턴스를 통제하면 클래스를 싱글턴으로 만들 수도 있고, 인스턴스화 불가로 만들 수도 있다.  
@@ -114,11 +114,11 @@
     - 서비스 접근 API가 바로 서비스 제공자 프레임워크의 근간이라고 한 유연한 정적 팩터리이다.
     - 대표적인 서비스 제공자 프레임워크는 JDBC가 있다.
         - 서비스 인터페이스 : Connection
-        - 제공자 등록 API: DriverManager.registerDriver()
+        - 제공자 등록 API: DriverManager.registerDriver() [→ 추가 내용](https://sysgongbu.tistory.com/95)
         - 서비스 접근 API : DriverManager.getConnection()
         - 서비스 제공자 인터페이스 : Driver
           ```java
-          public interface Connection  extends Wrapper, AutoCloseable { }
+          public interface Connection extends Wrapper, AutoCloseable { }
           ```
           ```java
           Connection conn = null;
@@ -134,7 +134,7 @@
     - 서비스 제공자 프레임워크 패턴에는 여러 변형이 있다.
         - 브리지 패턴 : 서비스 접근 API는 공급자가 제공하는 것보다 더 풍부한 서비스 인터페이스를 클라이언트에 반환할 수 있다.
         - 의존 객체 주입(DI) 프레임워크도 서비스 제공자라고 생각할 수 있다.
-        - 자바 6부터는 `java.util.ServiceLoader`라는 범용 서비스 제공자 프레임워크가 제공되어 프레임워크를 직접 만들 필요가 거의 없어졌다.
+        - 자바 6부터는 `java.util.ServiceLoader`라는 범용 서비스 제공자 프레임워크가 제공되어 프레임워크를 직접 만들 필요가 거의 없어졌다. *(→ item 59)*
 
 ### 정적 팩터리 메서드의 단점
 
@@ -167,4 +167,6 @@
 ---
 #### Reference
 
-- [[Effective Java] item1 - 생성자 대신 정적 팩토리 메서드를 고려하라.](https://vsfe.tistory.com/13")
+- [[Effective Java] item1 - 생성자 대신 정적 팩토리 메서드를 고려하라.](https://vsfe.tistory.com/13)
+- [Item1: 생성자 대신 정적 팩터리 메서드를 고려하라](https://sysgongbu.tistory.com/95)
+- [플라이웨이트 패턴](https://ko.wikipedia.org/wiki/%ED%94%8C%EB%9D%BC%EC%9D%B4%EC%9B%A8%EC%9D%B4%ED%8A%B8_%ED%8C%A8%ED%84%B4)
