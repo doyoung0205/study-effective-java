@@ -1,8 +1,8 @@
 # 객체 생성과 파괴
 
 [아이템 5. 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라](#자원을-직접-명시하지-말고-의존-객체-주입을-사용하라)  
-[- 정적 유틸리티 또는 싱글턴을 사용한 의존](정적-유틸리티-또는-싱글턴을-사용한-의존)  
-[- 정적 유틸리티 또는 싱글턴을 사용한 의존](의존-객체-주입을-사용한-의존)  
+[- 정적 유틸리티 또는 싱글턴을 사용한 의존](#정적-유틸리티-또는-싱글턴을-사용한-의존)  
+[- 의존 객체 주입을 사용한 의존](#의존-객체-주입을-사용한-의존)  
 
 <br>
 
@@ -13,8 +13,8 @@
 
 ### 정적 유틸리티 또는 싱글턴을 사용한 의존
 - 의존 관계를 설정하기 위해 정적 유틸리티 *(→ item 1, item 4)* 와 싱글턴 *(→ item 3)* 을 사용하는 방식이 있다.
-  - [정적 유틸리티를 잘못 사용한 예](../../src/main/java/study/heejin/chapter2/item5/SpellCheckerUtility.java) - 유연하지 않고 테스트하기 어렵다.
-  - [싱글턴을 잘못 사용한 예](../../src/main/java/study/heejin/chapter2/item5/SpellCheckerSingleton.java) - 유연하지 않고 테스트하기 어렵다.
+  - [정적 유틸리티를 잘못 사용한 예](../../src/main/java/study/heejin/chapter2/item5/SpellCheckerUtility.java#LC3) - 유연하지 않고 테스트하기 어렵다.
+  - [싱글턴을 잘못 사용한 예](../../src/main/java/study/heejin/chapter2/item5/SpellCheckerSingleton.java#LC3) - 유연하지 않고 테스트하기 어렵다.
 
 
 - 두 방식 모두 사전의 종류가 여러개 생겨날 때마다 유연하게 대처할 수 없다.
@@ -25,12 +25,12 @@
 ### 의존 객체 주입을 사용한 의존
 
 - 의존 객체 주입의 한 형태로, 인스턴스를 생성할 때 생성자에 필요한 자원을 넘겨주는 방식이 있다.
-  - [의존 객체 주입을 사용한 예](../../src/main/java/study/heejin/chapter2/item5/SpellCheckerDI.java) - 유연성과 테스트 용이성을 높여준다.
+  - [의존 객체 주입을 사용한 예](../../src/main/java/study/heejin/chapter2/item5/SpellCheckerDI.java#LC3) - 유연성과 테스트 용이성을 높여준다.
 
 
 - 의존 객체 주입을 사용하면 사전의 종류가 몇개든 상관없이 잘 동작한다.
 - 또한 불변을 보장하여 (같은 자원을 사용하려는) 여러 클라이언트가 의존 객체들을 안심하고 공유할 수 있다. *(→ item 17)*
-- 이 패턴의 쓸만한 변형으로, [생성자에 자원 팩터리를 넘겨주는 방식](../../src/test/java/study/heejin/chapter2/Item5Test.java)이 있다.
+- 이 패턴의 쓸만한 변형으로, [생성자에 자원 팩터리를 넘겨주는 방식](../../src/test/java/study/heejin/chapter2/Item5Test.java#LC50)이 있다.
   즉, 팩터리 메서드 패턴을 구현한 것이다.
   - `Supplier<T>` 인터페이스가 팩터리를 표현한 완벽한 예다.
   - `Supplier<T>`를 입력으로 받는 메서드는 일반적으로 한정적 와일드카드 타입을 사용해 팩터리의 타입 매개변수를 제한해야 한다. *(→ item 31)*
