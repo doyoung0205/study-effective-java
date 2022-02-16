@@ -10,13 +10,13 @@ import static study.heejin.chapter2.item2.Pizza.Topping.*;
 class Item2Test {
 
     @Test
-    @DisplayName("Á¡ÃşÁ¤ »ı¼ºÀÚ ÆĞÅÏ °´Ã¼ »ı¼º Å×½ºÆ®")
+    @DisplayName("ì ì¸µì • ìƒì„±ì íŒ¨í„´ ê°ì²´ ìƒì„± í…ŒìŠ¤íŠ¸")
     void nutritionFacts_1() {
         NutritionFacts_1 cocaCola = new NutritionFacts_1(240, 8, 100, 0, 35, 27);
     }
 
     @Test
-    @DisplayName("ÀÚ¹Ù ºóÁî ÆĞÅÏ °´Ã¼ »ı¼º Å×½ºÆ®")
+    @DisplayName("ìë°” ë¹ˆì¦ˆ íŒ¨í„´ ê°ì²´ ìƒì„± í…ŒìŠ¤íŠ¸")
     void nutritionFacts_2() {
         NutritionFacts_2 cocaCola = new NutritionFacts_2();
         cocaCola.setServingSize(240);
@@ -27,7 +27,7 @@ class Item2Test {
     }
 
     @Test
-    @DisplayName("ºô´õ ÆĞÅÏ °´Ã¼ »ı¼º Å×½ºÆ®")
+    @DisplayName("ë¹Œë” íŒ¨í„´ ê°ì²´ ìƒì„± í…ŒìŠ¤íŠ¸")
     void nutritionFacts_3() {
         NutritionFacts_3 nutritionFacts_3 = new NutritionFacts_3.Builder(240, 8)
                                                 .calories(100)
@@ -37,7 +37,7 @@ class Item2Test {
     }
 
     @Test
-    @DisplayName("°èÃşÇü Å¬·¡½º¿¡¼­ ºô´õ ÆĞÅÏ »ç¿ë")
+    @DisplayName("ê³„ì¸µí˜• í´ë˜ìŠ¤ì—ì„œ ë¹Œë” íŒ¨í„´ ì‚¬ìš©")
     void builderPatternPizza() {
         NyPizza nyPizza = new NyPizza.Builder(SMALL)
                                 .addTopping(SAUSAGE)
