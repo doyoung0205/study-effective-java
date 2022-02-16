@@ -2,11 +2,33 @@ package study.heejin.chapter2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.heejin.chapter2.item3.SingletonEnum;
+import study.heejin.chapter2.item3.SingletonField;
+import study.heejin.chapter2.item3.SingletonStaticFactory;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class Item3Test {
+
+    @Test
+    @DisplayName("싱글턴으로 객체가 생성되는지 테스트")
+    void singleton() {
+        SingletonField field_1 = SingletonField.INSTANCE;
+        SingletonField field_2 = SingletonField.INSTANCE;
+
+        SingletonStaticFactory staticFactory_1 = SingletonStaticFactory.getInstance();
+        SingletonStaticFactory staticFactory_2 = SingletonStaticFactory.getInstance();
+
+        SingletonEnum enum_1 = SingletonEnum.INSTANCE;
+        SingletonEnum enum_2 = SingletonEnum.INSTANCE;
+
+        assertThat(field_1).isEqualTo(field_2);
+        assertThat(staticFactory_1).isEqualTo(staticFactory_2);
+        assertThat(enum_1).isEqualTo(enum_2);
+    }
 
     @Test
     @DisplayName("공급자 테스트")

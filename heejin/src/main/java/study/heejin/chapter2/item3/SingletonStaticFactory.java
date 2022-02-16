@@ -5,7 +5,6 @@ public class SingletonStaticFactory {
     private static final SingletonStaticFactory INSTANCE = new SingletonStaticFactory();
 
     private SingletonStaticFactory() {
-
     }
 
     public static SingletonStaticFactory getInstance() {
@@ -18,7 +17,8 @@ public class SingletonStaticFactory {
         return INSTANCE;
     }
 
-    public String getSingleton() {
-        return "정적 팩터리 방식의 싱글턴";
+    public SingletonStaticFactory getSingleton() {
+        System.out.println("정적 팩터리 방식의 싱글턴");
+        return INSTANCE;
     }
 }
