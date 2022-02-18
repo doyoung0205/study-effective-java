@@ -1,8 +1,9 @@
-package study.heejin.chapter2;
+package study.heejin.chapter2.item7;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.heejin.chapter2.item7.Stack;
+import study.heejin.chapter2.item7.listener.Listener;
+import study.heejin.chapter2.item7.listener.MyListener;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -70,5 +71,19 @@ class Item7Test {
         // then
         assertThat(linkedHashMap.size()).isEqualTo(5);
         assertThat(linkedHashMap.get(1)).isNull();
+    }
+
+    @Test
+    @DisplayName("리스너 테스트")
+    void listener() {
+        new Listener() {
+            @Override
+            public void onEvent() {
+                System.out.println("new Listener");
+            }
+        };
+
+        MyListener myListener = new MyListener();
+        myListener.onEvent();
     }
 }

@@ -66,11 +66,31 @@
 - 클라이언트가 콜백을 등록만 하고 명확히 해지하지 않는다면, 뭔가 조치해주지 않는 한 콜백은 계속 쌓여갈 것이다.
 - 이럴 때 콜백을 **약한 참조**(weak reference)로 저장하면 가비지 컬렉터가 즉시 수거해간다.
 
+
+## 추가 학습 
+- [콜백(Callback)](../../src/test/java/study/heejin/chapter2/item7/CallbackTest.java)   
+  이벤트가 발생하면 특정 메소드를 호출해 알려준다. (1개)
+
+- [리스너(Listener)](../../src/test/java/study/heejin/chapter2/item7/ListenerTest.java)  
+  이벤트가 발생하면 연결된 리스너(핸들러)들에게 이벤트를 전달한다. (n개)
+
+- [phantom references](../../src/main/java/study/heejin/chapter2/item7/reference/PhantomReferenceExample.java)  
+  메모리에서 데이터가 실질적으로 삭제된 후 다음 작업을 진행하도록 조작 할 수 있다.
+
 <br>
 
 ---
 #### Reference
 
 - [LinkedHashMap removeEldestEntry() Method in Java](https://www.geeksforgeeks.org/linkedhashmap-removeeldestentry-method-in-java)
+- [콜백(Callback) 그리고 리스너(Listener)](https://www.crocus.co.kr/1533)
 
 
+- [다 쓴 객체 참조를 해제하라](https://github.com/java-squid/effective-java/blob/master/chapter02/item07/item7-han.md)
+- [Java Reference와 GC](https://d2.naver.com/helloworld/329631)
+- [자바 강한참조(Strong Reference)와 약한참조(Weak Reference)](https://ktko.tistory.com/entry/%EC%9E%90%EB%B0%94-%EA%B0%95%ED%95%9C%EC%B0%B8%EC%A1%B0Strong-Reference%EC%99%80-%EC%95%BD%ED%95%9C%EC%B0%B8%EC%A1%B0Weak-Reference)
+- [Guide to WeakHashMap in Java](https://www.baeldung.com/java-weakhashmap)
+
+
+- [Phantom References in Java](https://www.baeldung.com/java-phantom-reference)
+- [Java Phantom Reachable, Phantom Reference 란](https://luckydavekim.github.io/development/back-end/java/phantom-reference-in-java)

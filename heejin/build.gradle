@@ -15,6 +15,10 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation 'org.awaitility:awaitility:3.1.6'
+    testImplementation 'org.awaitility:awaitility-proxy:3.1.6'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
