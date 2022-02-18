@@ -5,7 +5,7 @@
 - 객체 소멸이 확실하지 않은 finalizer 나 cleaner를 사용하는 것은 시스템에 문제를 발생할 여지가 있으므로 사용을 지양하자
 
 #### finalizer Attack 이란
-- finalize 메서드를 통해 클래스의 정보에 접근하는 공격 방식이다.(chapter2.item8.FinalizerAttack.java)
+- finalize 메서드를 통해 클래스의 정보에 접근하는 공격 방식이다.(chapter2.item8.FinalizerAttackTest.java)
 
 #### 네이티브 피어
 - `JFrame`과 같은 자바 객체가 네이티브 메서드를 통해 기능을 위임한 객체로 가비지 컬렉터는 이 존재를 알지 못한다.
