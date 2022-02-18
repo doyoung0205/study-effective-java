@@ -15,6 +15,8 @@ public class ReferenceTest {
     void weakReference() {
         // given
         Language origin = new Language("english");
+        Language copy = origin;
+
         WeakReference weekReference = new WeakReference<>(origin); // java.lang.ref.WeakReference@154f730f
 
         assertNotNull(weekReference);
@@ -23,6 +25,7 @@ public class ReferenceTest {
 
         // 할당을 해지하기 위해 해당객체에 null 값 대입
         origin = null;
+        copy = null;
 
         // when
         // GC 강제 수행
