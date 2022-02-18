@@ -47,7 +47,7 @@
 - `finalizer`와 `cleaner`는 심각한 성능 문제도 동반한다.
 
 
-- `finalizer`를 사용한 클래스는 `finalizer` 공격에 노출되어 심각한 보안 문제를 일으킬 수도 있다.
+- `finalizer`를 사용한 클래스는 [finalizer 공격](../../src/test/java/study/heejin/chapter2/Item8Test.java)에 노출되어 심각한 보안 문제를 일으킬 수도 있다.
     - `finalizer` 공격 원리는 간단한다.  
       생성자나 직렬화 과정에서 예외가 발생하면, 이 생성되다 만 객체에서 악의적인 하위 클래스의 `finalizer`가 수행될 수 있게 된다.
     - 객체 생성을 막으려면 생성자에서 예외를 던지는 것만으로 충분하지만, `finalizer`가 있다면 그렇지도 않다.
