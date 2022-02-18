@@ -7,7 +7,7 @@
 <br>
 
 ## try-finally 보다는 try-with-resource를 사용하라
-- 
+ 
 - 자바 라이브러리에는 close 메서드를 호출해 직접 닫아줘야 하는 자원이 많다. 
     - `InputStream`, `OutputStream`, `jva.sql.Connection` 등이 좋은 예다.
     - 자원 닫기는 클라이언트가 놓치기 쉬워서 예측할 수 없는 성능 문제로 이어지기도 한다.

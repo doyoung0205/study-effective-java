@@ -19,6 +19,9 @@ dependencies {
     testImplementation 'org.awaitility:awaitility:3.1.6'
     testImplementation 'org.awaitility:awaitility-proxy:3.1.6'
 
+    implementation 'com.google.auto.value:auto-value-annotations:1.9'
+    annotationProcessor 'com.google.auto.value:auto-value-annotations:1.9'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
