@@ -47,7 +47,7 @@
 - `finalizer`와 `cleaner`는 심각한 성능 문제도 동반한다.
 
 
-- `finalizer`를 사용한 클래스는 [finalizer 공격](../../src/test/java/study/heejin/chapter2/Item8Test.java)에 노출되어 심각한 보안 문제를 일으킬 수도 있다.
+- `finalizer`를 사용한 클래스는 [finalizer 공격](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter2/Item8Test.java#LC24)에 노출되어 심각한 보안 문제를 일으킬 수도 있다.
     - `finalizer` 공격 원리는 간단한다.  
       생성자나 직렬화 과정에서 예외가 발생하면, 이 생성되다 만 객체에서 악의적인 하위 클래스의 `finalizer`가 수행될 수 있게 된다.
     - 객체 생성을 막으려면 생성자에서 예외를 던지는 것만으로 충분하지만, `finalizer`가 있다면 그렇지도 않다.
@@ -122,9 +122,14 @@
 
 
 (2) 네이티브 피어와 연결된 객체에서 사용하는 경우
-  - 네이티브 피어란 일반 자바 객체가 네이티브 메서드를 통해 기능을 위임한 네이티브 객체를 말한다.
+  - [네이티브 피어](https://github.com/java-squid/effective-java/issues/8#issuecomment-698310315)란 일반 자바 객체가 네이티브 메서드를 통해 기능을 위임한 네이티브 객체를 말한다.
   - 네이티브 피어는 자바 객체가 아니니 가비지 컬렉터는 그 존재를 알지 못한다.
   - 단, 성능 저하를 감당할 수 있고, 네이티브 피어가 심각한 자원을 가지고 있지 않을 때에만 해당된다.
 
 
 <br>
+
+---
+#### Reference
+
+- [[아이템 08] finalizer와 cleaner 사용을 피하라](https://github.com/java-squid/effective-java/issues/8#issuecomment-698310315)
