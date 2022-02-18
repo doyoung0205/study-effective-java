@@ -41,8 +41,9 @@
     }
     ```
     
-  - 다 쓴 참조를 해제하면 실수로 해당 참조를 사용하려고 할 때 `NullPointException`을 던지며 종료하기 때문에 프로그램 오류를 조기에 발견할 수도 있다.
-  - 하지만, 객체 참조를 null 처리하는 일은 예외적인 경우여야 한다. 다 쓴 객체 참조를 해제하는 가장 좋은 방법은 그 참조를 담은 변수를 유효 범위(scope) 밖으로 밀어내는 것이다. _(→ 아이템 57)_
+  - 다 쓴 참조를 해제하면 실수로 해당 참조를 사용하려고 할 때 `NullPointException`을 던지며 종료하기 때문에 프로그램 오류를 조기에 발견할 수도 있다. 
+  - 하지만, 객체 참조를 null 처리하는 것 역시 바람직하지 않으므로 null 처리는 예외적인 경우여야 한다.
+  - 다 쓴 객체 참조를 해제하는 가장 좋은 방법은 그 참조를 담은 변수를 **유효 범위(scope) 밖으로 밀어내는 것**이다. *(→ 아이템 57)*
   - null 처리는 스택처럼 자기 메모리를 직접 관리 하는 경우에 사용해야 한다.
   - 스택은 객체 자체가 아니라 **객체 참조**를 담는 elements 배열을 관리한다. 배열의 **활성 영역**에 속한 원소들이 사용되고, **비활성 영역**은 쓰이지 않는다. **문제는 가비지 컬렉터는 이 사실을 알 길이 없다.**
 
@@ -65,11 +66,31 @@
 - 클라이언트가 콜백을 등록만 하고 명확히 해지하지 않는다면, 뭔가 조치해주지 않는 한 콜백은 계속 쌓여갈 것이다.
 - 이럴 때 콜백을 **약한 참조**(weak reference)로 저장하면 가비지 컬렉터가 즉시 수거해간다.
 
+
+## 추가 학습 
+- [콜백(Callback)](../../src/test/java/study/heejin/chapter2/item7/CallbackTest.java)   
+  이벤트가 발생하면 특정 메소드를 호출해 알려준다. (1개)
+
+- [리스너(Listener)](../../src/test/java/study/heejin/chapter2/item7/ListenerTest.java)  
+  이벤트가 발생하면 연결된 리스너(핸들러)들에게 이벤트를 전달한다. (n개)
+
+- [phantom references](../../src/main/java/study/heejin/chapter2/item7/reference/PhantomReferenceExample.java)  
+  메모리에서 데이터가 실질적으로 삭제된 후 다음 작업을 진행하도록 조작 할 수 있다.
+
 <br>
 
 ---
 #### Reference
 
 - [LinkedHashMap removeEldestEntry() Method in Java](https://www.geeksforgeeks.org/linkedhashmap-removeeldestentry-method-in-java)
+- [콜백(Callback) 그리고 리스너(Listener)](https://www.crocus.co.kr/1533)
 
 
+- [다 쓴 객체 참조를 해제하라](https://github.com/java-squid/effective-java/blob/master/chapter02/item07/item7-han.md)
+- [Java Reference와 GC](https://d2.naver.com/helloworld/329631)
+- [자바 강한참조(Strong Reference)와 약한참조(Weak Reference)](https://ktko.tistory.com/entry/%EC%9E%90%EB%B0%94-%EA%B0%95%ED%95%9C%EC%B0%B8%EC%A1%B0Strong-Reference%EC%99%80-%EC%95%BD%ED%95%9C%EC%B0%B8%EC%A1%B0Weak-Reference)
+- [Guide to WeakHashMap in Java](https://www.baeldung.com/java-weakhashmap)
+
+
+- [Phantom References in Java](https://www.baeldung.com/java-phantom-reference)
+- [Java Phantom Reachable, Phantom Reference 란](https://luckydavekim.github.io/development/back-end/java/phantom-reference-in-java)
