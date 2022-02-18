@@ -6,3 +6,13 @@
 #### try-with-resources
  - 위와 같은 단점을 개선하기 위해 블록 내 자원이 사용이 종료될 때 자동으로 회수해준다.
  - 위와 같은 경우 예외 스택을 찾기 어려웠으나(예외를 삼킴) try-with-resources는 중첩없이 다중 예외처리가 가능하다
+
+
+#### 닫아야하는 객체란 무엇이 있는가 
+- Autoclosable을 구현한 객체
+- [Stream API](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html)
+Streams have a BaseStream.close() method and implement AutoCloseable, but nearly all stream instances do not actually need to be closed after use.
+Generally, only streams whose source is an `IO channel` (such as those returned by Files.lines(Path, Charset)) will require closing.
+Most streams are backed by collections, arrays, or generating functions, which require no special resource management. 
+(If a stream does require closing, it can be declared as a resource in a try-with-resources statement.)
+
