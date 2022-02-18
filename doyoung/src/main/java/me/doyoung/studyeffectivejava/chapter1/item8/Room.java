@@ -1,6 +1,8 @@
 package me.doyoung.studyeffectivejava.chapter1.item8;
 
+import java.io.InputStream;
 import java.lang.ref.Cleaner;
+import java.util.Objects;
 
 // 코드 8-1 cleaner를 안전망으로 활용하는 AutoCloseable 클래스 (44쪽)
 public class Room implements AutoCloseable {
@@ -39,4 +41,5 @@ public class Room implements AutoCloseable {
     public void close() {
         cleanable.clean();
     }
+
 }
