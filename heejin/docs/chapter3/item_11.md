@@ -17,6 +17,7 @@
 2) equals(Object)가 두 객체를 같다고 판단했다면, 두 객체의 hashCode는 똑같은 값을 반환해야 한다.
 3) equals(Object)가 두 객체를 다르다고 판단했더라도, 두 객체의 hashCode가 서로 다른 값을 반환할 필요는 없다.
 
+<br>
 
 ### 논리적으로 같은 객체인데 해시 코드가 다른 경우 
 - Objects의 두 번째 명세를 위반한 경우 발생하는 문제이다.
@@ -29,6 +30,7 @@
   m.get(new PhoneNumber(707, 867, 5309)); // "Jenny" 가 나와야 할 것 같지만 null을 반환한다.
   ```
 
+<br>
 
 ### Hash 관련 Colletions
 - HashSet, HashMap 과 같은 Hash 관련 Collection 에서 Key는 hashCode 를 기준으로 정해진다.
@@ -52,6 +54,7 @@
 - equals() 는 재정의 하고 hashCode()를 재정의 하지 않을 때 **→ 같은 객체인데 hashCode가 다르기 때문에 해당 객체가 저장된 버킷을 찾을 수 없다.**
 - hashCode()는 재정의하고 equals()를 재정의 하지 않을 때 **→ hashCode가 같은데 값이 같은 객체가 없으므로 원하는 객체를 찾을 수 없다.**
 
+<br>
 
 ### hashCode 구현
 
@@ -88,7 +91,8 @@
     }
     ```
     - 성능에 민감한 경우라면 hashCode를 Laye Loading 하는 방식을 사용해 볼 수 있다. - [예시](../../src/main/java/study/heejin/chapter3/item11/LazyLoadHashCodeNumber.java)
-  
+
+<br>
 
 ### 좋은 hashCode를 작성하는 요령
 1. int 변수 result를 선언한 후 값 `c`로 초기화한다. 이때 `c`는 해당 객체의 첫번째 핵심 필드를 2.a 방식으로 계산한 해시코드이다. **equals에서 사용되지 않는 필드는 반드시 hashCode에서도 제외해야한다.**
@@ -121,7 +125,7 @@
 
 - 해시 충돌이 더욱 적은 방법을 꼭 써야 한다면, 구아바의 com.google.common.hash.Hashing을 참고하자 - [Guava를 써야하는 5가지 이유](https://blog.outsider.ne.kr/710)
 
-
+<br>
 
 ### hashCode 주의사항
 - 파생 필드는 해시코드 계산에서 제외해도 된다.

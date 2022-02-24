@@ -43,14 +43,32 @@
 ### toString 재정의
 - 재정의 하는 경우
   - 객체의 값에 관해 알려주지 않는 Object의 toString보다는 자동 생성된 toString이 훨씬 유용하다.
-  - 하위 클래스들이 공유해야 할 문자열 표현이 있는 추상 클래스라면 toString을 재정의해줘야 한다. - [예시) AbstractCollection의 toString](../../src/test/java/study/heejin/chapter3/Item12Test.java)
+  - 하위 클래스들이 공유해야 할 문자열 표현이 있는 추상 클래스라면 toString을 재정의해줘야 한다. - [예시) AbstractCollection의 toString](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item12Test.java#LC25)
 - 재정의 하지 않아도 되는 경우
   - 정적 유틸리티 클래스는 toString을 제공할 이유가 없다.
   - 대부분의 열거 타입도 자바가 이미 완벽한 toString을 제공하니 따로 재정의 할 필요가 없다.
 
 
 ### toString 주의 사항
-- IDE에서 지원해주는 toString() 혹은 Lombok에서 지원하는 @ToString을 무분별하게 사용하면 StackOverflowError가 일어날 수 있다. - [예시) StackOverflowError](../../src/main/java/study/heejin/chapter3/item12/StackOverflowError.java)
+- IDE에서 지원해주는 toString() 혹은 Lombok에서 지원하는 @ToString을 무분별하게 사용하면 StackOverflowError가 일어날 수 있다. - [예시) StackOverflowError](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item12Test.java#LC46)
+  ```java
+  public static class A {
+      private B b = new B();
+       @Override
+      public String toString() {
+          return "A {" + "b=" + b + "}";
+      }
+  }
+  
+  public static class B {
+      private A a = new A();
+
+      @Override
+      public String toString() {
+          return "B {" + "a=" + a + "}";
+      }
+  }
+  ```
 
 
 

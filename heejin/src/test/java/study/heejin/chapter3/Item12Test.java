@@ -44,7 +44,7 @@ class Item12Test {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("toString 순환 참조")
     void stackOverflowError() {
         // given
         StackOverflowError.A aClass = new StackOverflowError.A();
