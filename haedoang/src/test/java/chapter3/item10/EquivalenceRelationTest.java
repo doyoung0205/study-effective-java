@@ -1,4 +1,4 @@
-package chapter2.item10;
+package chapter3.item10;
 
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
