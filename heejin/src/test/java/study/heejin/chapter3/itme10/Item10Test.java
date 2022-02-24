@@ -1,4 +1,4 @@
-package study.heejin.chapter3;
+package study.heejin.chapter3.itme10;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
