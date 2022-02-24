@@ -27,13 +27,12 @@
 
 
 ### toString 포맷 문서화
-- toString을 구현할 때 반환값의 포맷을 문서화할지 정해야 한다.
-  - 전화번호나 행렬 같은 값 클래스라면 문서화하기를 권한다.
-- 포맷을 명시하면 그 객체는 표준적이고, 명확하고, 사람이 읽을 수 있게 된다. 
-  - 값을 그대로 입출력에 사용하거나 CSV 파일처럼 사람이 읽을 수 있는 데이터 객체로 저장할 수 있다.
-- 포맷을 명시하기로 했다면, 명시한 포맷에 맞는 문자열과 객체를 상호 전환할 수 있는 정적 팩터리나 생성자를 함께 제공해주면 좋다.
-  - BigInteger, BigDecimal 과 대부분의 기본 타입 클래스가 여기 해당한다.
-  
+- toString을 구현할 때 반환값의 포맷을 문서화할지 정해야 한다.  
+  \- 전화번호나 행렬 같은 값 클래스라면 문서화하기를 권한다.
+- 포맷을 명시하면 그 객체는 표준적이고, 명확하고, 사람이 읽을 수 있게 된다.  
+  \- 값을 그대로 입출력에 사용하거나 CSV 파일처럼 사람이 읽을 수 있는 데이터 객체로 저장할 수 있다.
+- 포맷을 명시하기로 했다면, 명시한  포맷에 맞는 문자열과 객체를 상호 전환할 수 있는 정적 팩터리나 생성자를 함께 제공해주면 좋다.  
+  \- BigInteger, BigDecimal 과 대부분의 기본 타입 클래스가 여기 해당한다.
 - 다만, 포맷을 한번 명시하면 평생 그 포맷에 얽매이게 된다. 프로그래머들이 이에 맞춰 코딩해야 한다.
 - 반대로 포맷을 명시하지 않는 다면 향후 포맷을 개선할 수 있는 유연성을 얻게 될 것이다.
 - 포맷을 명시하든 아니든 의도는 명확히 밝혀야 한다. 
@@ -43,14 +42,16 @@
 ### toString 재정의
 - 재정의 하는 경우
   - 객체의 값에 관해 알려주지 않는 Object의 toString보다는 자동 생성된 toString이 훨씬 유용하다.
-  - 하위 클래스들이 공유해야 할 문자열 표현이 있는 추상 클래스라면 toString을 재정의해줘야 한다. - [예시) AbstractCollection의 toString](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item12Test.java#LC25)
+  - 하위 클래스들이 공유해야 할 문자열 표현이 있는 추상 클래스라면 toString을 재정의해줘야 한다.   
+    \- [예시) AbstractCollection의 toString](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item12Test.java#LC25)
 - 재정의 하지 않아도 되는 경우
-  - 정적 유틸리티 클래스는 toString을 제공할 이유가 없다.
-  - 대부분의 열거 타입도 자바가 이미 완벽한 toString을 제공하니 따로 재정의 할 필요가 없다.
+  - **정적 유틸리티 클래스**는 toString을 제공할 이유가 없다.
+  - 대부분의 **열거 타입**도 자바가 이미 완벽한 toString을 제공하니 따로 재정의 할 필요가 없다.
 
 
 ### toString 주의 사항
-- IDE에서 지원해주는 toString() 혹은 Lombok에서 지원하는 @ToString을 무분별하게 사용하면 StackOverflowError가 일어날 수 있다. - [예시) StackOverflowError](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item12Test.java#LC46)
+- IDE에서 지원해주는 toString() 혹은 Lombok에서 지원하는 @ToString을 무분별하게 사용하면 StackOverflowError가 일어날 수 있다.  
+  \- [예시) StackOverflowError](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item12Test.java#LC46)
   ```java
   public static class A {
       private B b = new B();
