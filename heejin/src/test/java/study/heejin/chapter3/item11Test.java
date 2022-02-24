@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class item11Test {
+class Item11Test {
 
     @Test
     @DisplayName("해시코드는 다른 엔트리끼리 동치성 비교를 하지 않음")

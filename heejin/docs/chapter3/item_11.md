@@ -20,7 +20,7 @@
 
 ### 논리적으로 같은 객체인데 해시 코드가 다른 경우 
 - Objects의 두 번째 명세를 위반한 경우 발생하는 문제이다.
-- HashMap은 해시코드가 다른 엔트리끼리는 동치성 비교를 시도조차 하지 않도록 최적화 되어 있다. - [예시](../../src/test/java/study/heejin/chapter3/item11Test.java)
+- HashMap은 해시코드가 다른 엔트리끼리는 동치성 비교를 시도조차 하지 않도록 최적화 되어 있다. - [예시](../../src/test/java/study/heejin/chapter3/Item11Test.java)
 
   ```java
   Map<PhoneNumber, String> m = new HashMap<>();
@@ -117,7 +117,10 @@
   ```
   - 31은 홀수이면서 소수이기도 하고 `31 * i = (i << 5) - i` 와 같이 시프트연산과 뺄셈으로 최적화할 수 있기 때문에 사용한다. 
   - 하지만 사용하는 이유는 명확하지는 않고 전통적으로 쓰고 있다.
-  
+
+
+- 해시 충돌이 더욱 적은 방법을 꼭 써야 한다면, 구아바의 com.google.common.hash.Hashing을 참고하자 - [Guava를 써야하는 5가지 이유](https://blog.outsider.ne.kr/710)
+
 
 
 ### hashCode 주의사항
@@ -133,7 +136,8 @@
 #### Reference
 
 - [item 11. equals를 재정의하려거든 hashCode도 재정의하라](https://github.com/Meet-Coder-Study/book-effective-java/blob/main/3%EC%9E%A5/11_equals%EB%A5%BC_%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%98%EB%A0%A4%EA%B1%B0%EB%93%A0_hashCode%EB%8F%84_%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%98%EB%9D%BC_%EB%B0%95%EA%B2%BD%EC%B2%A0.md)
-- [item 11. equals를 재정의하려거든 hashCode도 재정의하라](https://github.com/Meet-Coder-Study/book-effective-java/blob/main/3%EC%9E%A5/11_equals%EB%A5%BC_%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%98%EB%A0%A4%EA%B1%B0%EB%93%A0_hashCode%EB%8F%84_%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%98%EB%9D%BC_%EC%95%88%EC%86%A1%EC%9D%B4.md)
+- [아이템 11 equals를 재정의하려거든 hashCode도 재정의하라](https://github.com/Meet-Coder-Study/book-effective-java/blob/main/3%EC%9E%A5/11_equals%EB%A5%BC_%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%98%EB%A0%A4%EA%B1%B0%EB%93%A0_hashCode%EB%8F%84_%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%98%EB%9D%BC_%EC%95%88%EC%86%A1%EC%9D%B4.md)
 - [Effective Java 3rd ITEM 11](https://dlsrb6342.github.io/2019/04/30/Effective-Java-3rd-ITEM-11/)
+- [Guava를 써야하는 5가지 이유](https://blog.outsider.ne.kr/710)
 
 
