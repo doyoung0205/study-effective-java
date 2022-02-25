@@ -128,6 +128,7 @@ class CloneTest {
         assertThat(queue.pop()).isEqualTo(clonedQueue.pop())
                 .isEqualTo(clonedQueue2.pop())
                 .isEqualTo("BTS입니다.");
-        assertThat(queue).isNotSameAs(clonedQueue).isNotSameAs(clonedQueue2);
+        assertThat(queue).isNotSameAs(clonedQueue)
+                .isNotSameAs(clonedQueue2);
     }
 }

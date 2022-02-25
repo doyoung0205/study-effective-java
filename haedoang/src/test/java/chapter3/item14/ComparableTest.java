@@ -28,7 +28,8 @@ public class ComparableTest {
         Collections.sort(students);
 
         // then
-        assertThat(students).extracting(Student::getName).containsExactly("레이디가가", "아리아나그란데", "두아리파");
+        assertThat(students).extracting(Student::getName)
+                .containsExactly("레이디가가", "아리아나그란데", "두아리파");
     }
 
     @Test
@@ -45,7 +46,8 @@ public class ComparableTest {
         Collections.sort(students);
 
         // then
-        assertThat(students).extracting(Student::getName).containsExactly("레이디가가", "아리아나그란데", "두아리파", "위켄드")
+        assertThat(students).extracting(Student::getName)
+                .containsExactly("레이디가가", "아리아나그란데", "두아리파", "위켄드")
                 .as("sort1. avgScore, sort2. name");
     }
 
@@ -60,15 +62,17 @@ public class ComparableTest {
         );
 
         // when
-        students.sort(Comparator.comparingDouble(Student::getAvgScore).thenComparing(Student::getName));
+        students.sort(Comparator.comparingDouble(Student::getAvgScore)
+                .thenComparing(Student::getName));
 
         // then
-        assertThat(students).extracting(Student::getName).containsExactly("레이디가가", "아리아나그란데", "두아리파", "위켄드")
+        assertThat(students).extracting(Student::getName)
+                .containsExactly("레이디가가", "아리아나그란데", "두아리파", "위켄드")
                 .as("sort1. avgScore, sort2. name");
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("hashSet 기능 테스트")
     public void hashSetTest() {
         // given
         final HashSet<BigDecimal> hashSet = new HashSet<>();
@@ -79,11 +83,12 @@ public class ComparableTest {
 
         // then
         assertThat(hashSet).hasSize(2);
-        assertThat(new BigDecimal("1.0").equals(new BigDecimal("1.00"))).isFalse();
+        assertThat(new BigDecimal("1.0").equals(new BigDecimal("1.00")))
+                .isFalse();
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("treeSet은 정렬을 지원하기 때문에 compareTo() 동작 테스트")
     public void treeSetTest() {
         // given
         final TreeSet<BigDecimal> treeSet = new TreeSet<>();
@@ -95,6 +100,7 @@ public class ComparableTest {
         // then
         assertThat(treeSet).hasSize(1)
                 .as("treeSet은 정렬을 자동으로 하는데 이때 compareTo가 사용된다. 그래서 원소는 1개가 저장이 된다.");
-        assertThat(new BigDecimal("1.0").compareTo(new BigDecimal("1.00"))).isEqualTo(0);
+        assertThat(new BigDecimal("1.0").compareTo(new BigDecimal("1.00")))
+                .isEqualTo(0);
     }
 }
