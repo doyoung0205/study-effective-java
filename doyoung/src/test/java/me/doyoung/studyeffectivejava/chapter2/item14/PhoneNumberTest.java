@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import java.util.NavigableSet;
 import java.util.TreeSet;
 
+// COMPARATOR:1244 -> 느리지만 읽기쉬움
+// COMPARE TO:1065 -> 이게 더 빠름
+
 class PhoneNumberTest {
     @Test
     void phoneNumberWithCompare() {
@@ -15,9 +18,6 @@ class PhoneNumberTest {
         };
         System.out.print("phoneNumberWithCompare :: ");
         checkSpeed(runnable);
-
-        // COMPARATOR:1244 -> 느리지만 읽기쉬움
-        // COMPARE TO:1065 -> 이게 더 빠름
     }
 
     @Test
