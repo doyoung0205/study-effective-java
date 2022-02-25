@@ -3,6 +3,9 @@ package chapter3.iterm13;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Hashtable;
+import java.util.Objects;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -100,5 +103,31 @@ class CloneTest {
         assertThat(stack.getElementsHashCode()).isNotEqualTo(actual.getElementsHashCode());
     }
 
-    //TODO PAGE82
+    @Test
+    @DisplayName("복사 생성자 & 복사 팩터리를 구현한 Queue 테스트")
+    public void queueTest() throws IllegalAccessException {
+        // given
+        final Queue queue = new Queue(5);
+
+        // when
+        queue.push("안녕하세요");
+        queue.push("우리는");
+        queue.push("BTS입니다.");
+
+        //복사 생성자
+        final Queue clonedQueue = new Queue(queue);
+        final Queue clonedQueue2 = Queue.newInstance(queue);
+
+        // then
+        assertThat(queue.pop()).isEqualTo(clonedQueue.pop())
+                .isEqualTo(clonedQueue2.pop())
+                .isEqualTo("안녕하세요");
+        assertThat(queue.pop()).isEqualTo(clonedQueue.pop())
+                .isEqualTo(clonedQueue2.pop())
+                .isEqualTo("우리는");
+        assertThat(queue.pop()).isEqualTo(clonedQueue.pop())
+                .isEqualTo(clonedQueue2.pop())
+                .isEqualTo("BTS입니다.");
+        assertThat(queue).isNotSameAs(clonedQueue).isNotSameAs(clonedQueue2);
+    }
 }
