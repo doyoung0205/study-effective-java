@@ -1,4 +1,4 @@
-package chapter3.chapter12;
+package chapter3.iterm12;
 
 import java.util.Objects;
 
