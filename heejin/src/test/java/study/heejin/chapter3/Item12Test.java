@@ -1,5 +1,6 @@
 package study.heejin.chapter3;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.heejin.chapter3.item12.StackOverflowError;
@@ -44,6 +45,7 @@ class Item12Test {
     }
 
     @Test
+    @Disabled
     @DisplayName("toString 순환 참조")
     void stackOverflowError() {
         // given
