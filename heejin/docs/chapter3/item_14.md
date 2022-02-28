@@ -2,7 +2,7 @@
 
 [아이템 14. Comparable을 구현할지 고려하라](#comparable을-구현할지-고려하라)   
 [- compareTo 메서드의 일반 규약](#compareto-메서드의-일반-규약)  
-[- compareTo 메서드 주의사항](#compareto-메서드t주의사항)  
+[- compareTo 메서드 주의사항](#compareto-메서드-주의사항)  
 [- 핵심 필드의 비교](#핵심-필드의-비교)  
 
 <br>

@@ -5,7 +5,7 @@
 [- clone 메서드의 일반 규약](#clone-메서드의-일반-규약)  
 [- clone 메서드 구현](#clone-메서드-구현)  
 [- clone 메서드 재정의 시 주의사항](#clone-메서드-재정의-시-주의사항)  
-[- 복사 생성자와 복사 팩터리](#복사생성자와-복사-팩터리)
+[- 복사 생성자와 복사 팩터리](#복사-생성자와-복사-팩터리)
 
 <br>
 
@@ -14,13 +14,15 @@
   - `clone()` 메서드가 선언된 곳이 `Cloneable`이 아닌 `Object`이다. 
   - `clone()` 메서드의 접근 제한자가 `protected` 이다. 
   - `Cloneable`을 구현하는 것만으로는 접근이 허용된 clone 메서드를 제공한다는 보장이 없기 때문에 `clone()`를 호출할 수 없다.
-  
+
+<br>
 
 ### Cloneable 인터페이스
 - Object의 protected 메서드인 clone의 **동작 방식을 결정한다.**
 - Cloneable 을 구현한 클래스의 인터페이스에서 clone을 호출하면 그 객체의 필드들을 하나하나 복사한 객체를 반환한다.
 - Cloneable 을 구현하지 않은 클래스에서 clone을 호출하는 경우 `CloneNotSupportedException`을 던진다.
 
+<br>
 
 ### clone 메서드의 일반 규약
 - '복사'의 정확한 듯은 그 객체를 구현한 클래스에 따라 다를 수 있다.
@@ -41,6 +43,7 @@
   - 관례상, 반환된 객체와 원본 객체는 독립적이다. 
   - 이를 만족하려면 super.clone() 으로 얻은 객체의 필드 중 하나 이상을 반환 전에 수정해야 할 수 있다.
 
+<br>
 
 ### clone 메서드 구현
 - 복제가 필요한 클래스에 Cloneable을 구현하고, 접근 제어자는 public으로, 반환 타입은 클래스 자신으로 변경한다.
@@ -49,13 +52,13 @@
 - 참조형 타입을 필드로 갖는다면, 단순히 super.clone() 을 구현해서는 안된다.
   - 원본이나 복제본 중 하나를 수정하면 다른 하나도 수정되어 불변식을 해치게 된다. - [예시](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item13Test.java#LC21)
   - clone 메서드가 제대로 동작하려면 내부의 참조 타입까지 재귀적으로 복사를 해주어야 한다. - [예시](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item13Test.java#LC43)
-- 하지만, clone을 재귀적으로 호출하는 것만드로 충분한 복사가 되지 않는 경우도 있다. 
-  - 복제본은 자신만의 버킷 배열을 갖지만, 이 배열은 원본과 같은 연결 리스트를 참조하여 원본과 복제본 모두 예기치 않게 동작할 가능성이 생긴다. - [예시](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item13Test.java#LC64)
-  - 이를 해결하려면, 각 버킷을 구성하는 연결 리스트를 복사해야 한다. - [예시](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item13Test.java#LC85)
-  - `HashTable.Entry`는 깊은 복사를 지원하도록 보강되었다.
-- 마지막으로, super.clone을 호출하여 객체의 모든 필드를 초기 상태로 설정한 다음, 고수준 메서드들을 활용하여 복제하는 방법이 있다. 
-  - 고수준 메서드를 활용하면 간단하긴 하지만, 저수준에서 바로 처리할 때보다는 느리다.
-  - 또한, 필드 단위 객체 복사를 우회하기 때문에 Cloneable 아키텍처와 어울리지 않는 방식이기도 하다.
+  - clone을 재귀적으로 호출하는 것만드로 충분한 복사가 되지 않는 경우도 있다. 
+    - 복제본은 자신만의 버킷 배열을 갖지만, 이 배열은 원본과 같은 연결 리스트를 참조하여 원본과 복제본 모두 예기치 않게 동작할 가능성이 생긴다. - [예시](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item13Test.java#LC64)
+    - 이를 해결하려면, 각 버킷을 구성하는 연결 리스트를 복사해야 한다. - [예시](https://github.com/pageprologue/study-effective-java/blob/main/heejin/src/test/java/study/heejin/chapter3/Item13Test.java#LC85)
+    - `HashTable.Entry`는 깊은 복사를 지원하도록 보강되었다.
+  - super.clone을 호출하여 객체의 모든 필드를 초기 상태로 설정한 다음, 고수준 메서드들을 활용하여 복제하는 방법이 있다. 
+    - 고수준 메서드를 활용하면 간단하긴 하지만, 저수준에서 바로 처리할 때보다는 느리다.
+    - 또한, 필드 단위 객체 복사를 우회하기 때문에 Cloneable 아키텍처와 어울리지 않는 방식이기도 하다.
 
   #### <요약>
   - `Cloneable` 인터페이스를 구현하는 모든 클래스는 `clone`을 재정의한다.
@@ -67,6 +70,7 @@
   - 기본 타입 필드와 불변 객체 참조만 갖는 클래스인 경우 어떤 필드도 수정할 필요가 없다.
     - 단, 일련번호나 고유 ID는 비록 기본 타입이나 불변일 지라도 수정해줘야 한다.
 
+<br>
 
 ### clone 메서드 재정의 시 주의사항
 - 생성자에서는 재정의될 수 있는 메서드를 호출하지 않아야 하는 것처럼 clone 메서드도 마찬가지이다. *(→ item 19)*
@@ -75,6 +79,7 @@
 - 상속용 클래스는 Cloneable을 구현해서는 안된다.
 - Cloneable을 구현한 스레드 안전 클래스를 작성할 때는 clone 메서드 역시 적절히 동기화해줘야 한다. *(→ item 78)*
 
+<br>
 
 ### 복사 생성자와 복사 팩터리
 - 복사 생성자란 단순히 자신과 같은 클래스의 인스턴스를 인수로 받는 생성자를 말한다.
@@ -93,6 +98,7 @@
 - 복사 생성자와 복사 팩터리는 해당 클래스가 구현한 '인터페이스' 타입의 인스턴스를 인수로 받을 수 있다.
   - 인터페이스 기반 복사 생성자와 복사 팩터리의 더 정확한 이름은 '변환 생성자'와 '변환 팩터리'다.
 
+<br>
 
 ### 핵심 정리
 - 새로운 인터페이스를 만들 때는 절대 Cloneable을 확장해서는 안되며, 새로운 클래스도 이를 구현해서는 안된다.
