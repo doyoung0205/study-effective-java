@@ -1,7 +1,7 @@
-package chapter3.iterm13;
+package chapter3.item13;
 
 /**
- * packageName : chapter3.iterm13
+ * packageName : chapter3.item13
  * fileName : JapanesePerson
  * author : haedoang
  * date : 2022-02-25

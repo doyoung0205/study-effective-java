@@ -59,26 +59,15 @@ public final class PhoneNumberWithComparator implements Cloneable, Comparable<Ph
                 areaCode, prefix, lineNum);
     }
 
-//    // 코드 14-2 기본 타입 필드가 여럿일 때의 비교자 (91쪽)
-    public int compareTo(PhoneNumberWithComparator pn) {
-        int result = Short.compare(areaCode, pn.areaCode);
-        if (result == 0)  {
-            result = Short.compare(prefix, pn.prefix);
-            if (result == 0)
-                result = Short.compare(lineNum, pn.lineNum);
-        }
-        return result;
-    }
-
     // 코드 14-3 비교자 생성 메서드를 활용한 비교자 (92쪽)
     public static final Comparator<PhoneNumberWithComparator> COMPARATOR =
             comparingInt((PhoneNumberWithComparator pn) -> pn.areaCode)
                     .thenComparingInt(pn -> pn.prefix)
                     .thenComparingInt(pn -> pn.lineNum);
 
-//    public int compareTo(PhoneNumber pn) {
-//        return COMPARATOR.compare(this, pn);
-//    }
+    public int compareTo(PhoneNumberWithComparator pn) {
+        return COMPARATOR.compare(this, pn);
+    }
 
     protected static PhoneNumberWithComparator randomPhoneNumber() {
         Random rnd = ThreadLocalRandom.current();

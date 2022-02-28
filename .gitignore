@@ -2,3 +2,5 @@
 /doyoung/.idea/
 /doyoung/.gradle/
 /doyoung/build/
+**/wrapper/**
+**/wrapper/**

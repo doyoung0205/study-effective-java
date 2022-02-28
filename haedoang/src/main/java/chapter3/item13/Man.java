@@ -1,17 +1,17 @@
-package chapter3.iterm13;
+package chapter3.item13;
 
 /**
  * packageName : chapter3.iterm13
- * fileName : Girl
+ * fileName : Person
  * author : haedoang
  * date : 2022-02-25
  * description :
  */
-public class Women {
+public class Man implements Cloneable {
     private String name;
     private int age;
 
-    public Women(String name, int age) {
+    public Man(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -30,6 +30,6 @@ public class Women {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        return new Women(name, age); //anti pattern
+        return super.clone();
     }
 }

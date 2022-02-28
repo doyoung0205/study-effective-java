@@ -10,6 +10,7 @@ public class Child2 extends Parent {
 //        comparing((Parent p) -> p)
 //                .thenComparingInt(p -> p.phoneNumber)
 //                .compare(this, o);
+
         return 0;
     }
 }

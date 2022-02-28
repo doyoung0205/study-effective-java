@@ -34,4 +34,11 @@ public class PhoneNumber {
 //    public int hashCode() {
 //        return Objects.hash(areaCode, prefix, lineNum);
 //    }
+
+//    @Override public int hashCode() {
+//        int result = Short.hashCode(areaCode);
+//        result = 31 * result + Short.hashCode(prefix);
+//        result = 31 * result + Short.hashCode(lineNum);
+//        return result;
+//    }
 }
