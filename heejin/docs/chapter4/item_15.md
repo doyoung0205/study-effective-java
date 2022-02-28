@@ -31,13 +31,12 @@
 
 - 접근 제어자
 
-| | 같은 클래스 접근 | 같은 패키지 접근 | 상속 클래스 접근 | 외부 접근 |
-| :----- : | :-----: | :-----: | :-----: | :-----: |
-| public          | O | O | O | O |
-| protected       | O | O | O | X |
-| package-private | O | O | X | X |
-| private         | O | X | X | X |
-
+  | |같은 클래스 접근|같은 패키지 접근|상속 클래스 접근|외부 접근|
+  |:----:|:----:|:----:|:----:|:----:|
+  | public          | O | O | O | O |
+  | protected       | O | O | O | X |
+  | package-private | O | O | X | X |
+  | private         | O | X | X | X |
 
 - **클래스의 공개 API를 세심히 설계한 후, 그 외의 모든 멤버는 private으로 만들자.**
   - 공개 API외의 모든 멤버는 private로 만들고, 오직 같은 패키지의 다른 클래스가 접근해야하는 멤버에 한해 package-private로 풀어주는 것이 좋다.
