@@ -1,4 +1,4 @@
-package chapter3.iterm11;
+package chapter3.item11;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

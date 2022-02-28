@@ -1,6 +1,5 @@
 package chapter3.item12;
 
-import chapter3.iterm12.Person;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

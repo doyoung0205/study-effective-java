@@ -1,4 +1,4 @@
-package chapter3.iterm13;
+package chapter3.item13;
 
 import java.util.Arrays;
 

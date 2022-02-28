@@ -1,4 +1,4 @@
-package chapter3.iterm13;
+package chapter3.item13;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;
@@ -11,12 +11,12 @@ import java.util.Objects;
  * date : 2022-02-25
  * description :
  */
-public class NewStack implements Cloneable {
+public class Stack implements Cloneable {
     private Object[] elements;
     private int size = 0;
     public static final int DEFAULT_INITIAL_CAPACITY = 16;
 
-    public NewStack() {
+    public Stack() {
         this.elements = new Object[DEFAULT_INITIAL_CAPACITY];
     }
 
@@ -57,13 +57,7 @@ public class NewStack implements Cloneable {
     }
 
     @Override
-    protected NewStack clone() throws CloneNotSupportedException {
-        try {
-            NewStack result = (NewStack) super.clone();
-            result.elements = elements.clone();
-            return result;
-        } catch(CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

@@ -1,4 +1,4 @@
-package chapter3.iterm11;
+package chapter3.item11;
 
 
 import chapter3.item10.PhoneNumber;
@@ -6,9 +6,7 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.security.cert.CollectionCertStoreParameters;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -58,15 +56,15 @@ public class HashCodeTest {
 
     //hashCode 성능비교
     public static void main(String[] args) {
-        final Map<chapter3.iterm11.첫번째방식, String> hashMap1 = IntStream.range(0, 10000000)
+        final Map<chapter3.item11.첫번째방식, String> hashMap1 = IntStream.range(0, 10000000)
                 .mapToObj(i -> new 첫번째방식("은하철도" + i, i))
                 .collect(Collectors.toMap(i -> i, i -> i.getName()));
 
-        final Map<chapter3.iterm11.두번째방식, String> hashMap2 = IntStream.range(0, 10000000)
+        final Map<chapter3.item11.두번째방식, String> hashMap2 = IntStream.range(0, 10000000)
                 .mapToObj(i -> new 두번째방식("은하철도" + i, i))
                 .collect(Collectors.toMap(i -> i, i -> i.getName()));
 
-        final Map<chapter3.iterm11.세번째방식, String> hashMap3 = IntStream.range(0, 10000000)
+        final Map<chapter3.item11.세번째방식, String> hashMap3 = IntStream.range(0, 10000000)
                 .mapToObj(i -> new 세번째방식("은하철도" + i, i))
                 .collect(Collectors.toMap(i -> i, i -> i.getName()));
 
