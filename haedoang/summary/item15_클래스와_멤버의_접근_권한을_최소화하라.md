@@ -26,3 +26,41 @@
    - 해당 메소드는 파라미터로 넘어온 객체를 변경 불가능한 객체로 프록시된 객체를 반환한다
 2. `clone()`메서드를 사용한다
    - 사용자에게 제공되는 참조가능한 객체인 array를 clone()하여 분리시킨다
+
+
+#### 모듈
+- Java 9 이상부터 지원
+- 모듈 이전의 시스템에서는 패키지에 대한 접근제어를 할 수 없었다.
+- 모듈은 위와 같은 단점을 개선하도록 패키지 캡슐화를 가능하게 한다
+  - `exports java.io;`
+- jdk도 모듈로 제공된다
+  > java --list-modules
+  
+##### Module Descriptor
+- 모듈이 의존하는 모듈들과 export할 내용을 정의해야 한다 (내보낼 내용이 모듈이 제공하는 오브젝트)
+- 관련 패키지를 모듈로 묶고, 모듈이 패키지를 대체하여
+
+#### base 모듈 구성
+![image_info](../images/module_structure.png)
+
+
+##### 모듈이 적용된 jdk 비교하기
+- 최상위 구조가 package ex) `rt.jar`
+![image_info](../images/jdk_diff.png)
+
+- 최상위 구조가 module ex) `java.base`
+![image_info](../images/jdk8vsjdk9.png)
+
+##### 정리 
+ - 기존 패키지 구조 방식에서는 패키지 단위의 접근제어가 불가능하여 패키지 단위의 캡슐화를 할 수 없었다
+ - 초기의 자바 플랫폼은 라이브러리를 통합한 `rt.jar`(runtime.jar 라는 뜻)로 배포하였다
+   - 단일 파일이라 불필요한 것까지 같이 배포되는 단점
+   - pc에서는 무리가 아니지만 임베디드 장비 등에서 사용하기에는 적합하지 않은 구조
+   - 런타임 시 필요하지 않은 클래스를 제거(리소스 낭비)하기 위한 `모듈` 도입
+ - 모듈의 도입으로 암묵적인 접근 수준이 추가됨
+   - 모듈 외부로 공개할 패키지: exports
+   - 모듈 외부로 공개하지 않을 패키지: ~~exports~~
+
+    
+- 출처
+  - [https://developer.ibm.com/tutorials/java-modularity-2/](https://developer.ibm.com/tutorials/java-modularity-2/)
