@@ -38,7 +38,6 @@
   
 ##### Module Descriptor
 - 모듈이 의존하는 모듈들과 export할 내용을 정의해야 한다 (내보낼 내용이 모듈이 제공하는 오브젝트)
-- 관련 패키지를 모듈로 묶고, 모듈이 패키지를 대체하여
 
 #### base 모듈 구성
 ![image_info](../images/module_structure.png)
