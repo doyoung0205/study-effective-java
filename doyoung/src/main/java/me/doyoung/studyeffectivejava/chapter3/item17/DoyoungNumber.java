@@ -1,8 +1,8 @@
 package me.doyoung.studyeffectivejava.chapter3.item17;
 
-public class DoyoungNumber {
+public final class DoyoungNumber {
 
-    private final int value; // 1
+    private final int value;
 
     // 캐시
     private int previousA;
