@@ -17,6 +17,6 @@ public class SpeedCheckUtils {
         runnable.run();
         long et = System.currentTimeMillis();
 
-        System.out.printf("%s :: \'%d\' ms", taskName, (et - st));
+        System.out.printf("%s :: \'%d\' ms\n", taskName, (et - st));
     }
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SpeedTest {
 
-    public static final int END_EXCLUSIVE = 1_000_000;
+    public static final int END_EXCLUSIVE = 1_000;
     public static final int START_INCLUSIVE = 0;
     public static final int LAST_ID = END_EXCLUSIVE - 1;
     public static final int FIRST_ID = START_INCLUSIVE;
@@ -63,10 +64,7 @@ public class SpeedTest {
 
     }
 
-    private int getFirstId(List<ComparableClass> comparableClasses) {
-        return comparableClasses.get(0).getId();
-    }
-
+    // 가장 빠름..
     @DisplayName("sort 와 Comparator 를 같이 사용할 경우")
     @Test
     void test3() {
@@ -74,12 +72,24 @@ public class SpeedTest {
 
             assertThat(getFirstId(comparableClasses)).isEqualTo(FIRST_ID);
 
-            Collections.sort(comparableClasses, ComparableClass.COMPARATOR.reversed());
+//            Collections.sort(comparableClasses, ComparableClass.COMPARATOR.reversed());
+            comparableClasses.sort(ComparableClass.COMPARATOR.reversed());
 
             assertThat(getFirstId(comparableClasses)).isEqualTo(LAST_ID);
-
         };
         SpeedCheckUtils.check(runnable);
+    }
 
+    @Test
+    void name() {
+        final BigInteger bigInteger = BigInteger.valueOf(1212);
+        System.out.println(bigInteger);
+        bigInteger.clearBit(12);
+
+        System.out.println(bigInteger);
+    }
+
+    private int getFirstId(List<ComparableClass> comparableClasses) {
+        return comparableClasses.get(0).getId();
     }
 }
