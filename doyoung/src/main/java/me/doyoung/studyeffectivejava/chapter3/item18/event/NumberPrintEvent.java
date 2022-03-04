@@ -13,6 +13,10 @@ public class NumberPrintEvent implements Event {
     @Override
     public void call() {
         System.out.println("NumberPrintComposition.call");
+        printNumber();
+    }
+
+    private void printNumber() {
         numberPrint.printNumber();
     }
 }
