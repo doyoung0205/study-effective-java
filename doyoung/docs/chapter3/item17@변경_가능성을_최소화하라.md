@@ -76,8 +76,11 @@ public void calc(BigInteger val) {
 ## 어려웠던 내용
 
 - (p.108) 불변 객체가 왜 스레드에서 안전한지?
+  - 참고: `me.doyoung.studyeffectivejava.chapter3.item17.ThreadSafeTest.java`
 - (p.108) 불변객체는 자유롭게 공유할 수 있고, 불변 객체끼리는 내부 데이터를 공유할 수 있다는 내용
+  - 불변식을 유지할 수 있고 이는 실패 원자성을 보장하기 떄문이다.
 - (p.111) BigInteger 와 BigDecimal 가 불변 객체가 되지 않을 수 있는 경우
+  - final class 이지 않고 public 생성자를 가졌기에 **상속을 할 수 있다.**
 
 ### 참고
 
@@ -85,3 +88,8 @@ public void calc(BigInteger val) {
 - https://junseokdev.tistory.com/34
 - https://devonce.tistory.com/26
 - https://www.baeldung.com/java-testing-multithreaded
+- https://docs.oracle.com/javase/tutorial/essential/concurrency/imstrat.html
+- https://recordsoflife.tistory.com/686
+- http://tutorials.jenkov.com/java-concurrency/thread-safety.html
+- https://docs.oracle.com/javase/specs/jls/se8/html/jls-17.html#jls-17.5
+- https://medium.com/javarevisited/java-concurrency-java-memory-model-96e3ac36ec6b
