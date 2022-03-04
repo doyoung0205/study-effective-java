@@ -3,7 +3,7 @@ package me.doyoung.studyeffectivejava.chapter3.item17;
 import me.doyoung.studyeffectivejava.utils.SpeedCheckUtils;
 import org.junit.jupiter.api.Test;
 
-class DoyoungNumberTest {
+class DoyoungNumberTestPrint {
 
     @Test
     void cache() {

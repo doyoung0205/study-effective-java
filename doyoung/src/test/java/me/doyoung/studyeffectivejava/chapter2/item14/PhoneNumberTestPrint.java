@@ -8,7 +8,7 @@ import java.util.TreeSet;
 // COMPARATOR:1244 -> 느리지만 읽기쉬움
 // COMPARE TO:1065 -> 이게 더 빠름
 
-class PhoneNumberTest {
+class PhoneNumberTestPrint {
     @Test
     void phoneNumberWithCompare() {
         final Runnable runnable = () -> {
