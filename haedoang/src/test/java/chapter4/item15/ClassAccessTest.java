@@ -69,7 +69,7 @@ class SingerFactory {
 
     public static final List<String> SINGERS = Collections.unmodifiableList(Arrays.asList(privateSingers));
 
-    public static final String[] getValue() {
-        return singers.clone();
+    public static String[] getValue() {
+        return privateSingers.clone();
     }
 }
