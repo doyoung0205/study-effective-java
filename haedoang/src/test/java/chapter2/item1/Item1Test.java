@@ -108,7 +108,10 @@ public class Item1Test {
     @DisplayName("getType은 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 사용한다(getInstance와 같음)")
     public void getType() {
         // given
-        final ArrayList<Wine> wineList = Lists.newArrayList(Wine.getInstance(Locale.KOREA, "맥주"), Wine.getInstance(Locale.KOREA, "소주"));
+        final ArrayList<Wine> wineList = Lists.newArrayList(
+                Wine.valueOf(Locale.KOREA, "맥주"),
+                Wine.valueOf(Locale.KOREA, "소주")
+        );
 
         // when
         Wines wines = Wine.getList(wineList);

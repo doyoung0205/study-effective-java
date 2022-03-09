@@ -31,7 +31,7 @@ class CalleeTest {
         String command = callee.execute();
 
         // then
-        assertThat(command).isEqualTo("run")
+        assertThat(command).isEqualTo("do run!!")
                 .as("Callee는 callback 익명구현객체를 통해 execute()메서드가 호출하였을 떄")
                 .as("callback 함수를 호출한다. 즉 Callback 익명구현객체는 Callee에 의해 발생한 이벤트에 대한 응답이 가능하다");
     }

@@ -33,7 +33,7 @@ class RomanNumeralUtilTest {
 
         // then
         assertThat(actual).isEqualTo("IV");
-        assertThat(instance).isSameAs(NumberUtil.INSTANCE);
+        assertThat(instance).isSameAs(RomanNumeralUtil.getInstance());
     }
 
     @Test
