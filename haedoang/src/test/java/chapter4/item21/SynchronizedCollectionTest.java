@@ -6,10 +6,10 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -46,7 +46,7 @@ public class SynchronizedCollectionTest {
     }
 
 
-    @Disabled(value = "멀티스레드 상황에서 에외 발생 테스트. 간헐적 실패")
+    //@Disabled(value = "멀티스레드 상황에서 에외 발생 테스트. 간헐적 실패")
     @Test
     @DisplayName("멀티스레드 처리가 되어있지 않은 arrayListTest")
     @RepeatedTest(100)
@@ -68,4 +68,39 @@ public class SynchronizedCollectionTest {
         assertThat(list).hasSize(8);
     }
 
+    @Test
+    @DisplayName("멀티스레드 처리가 되어있지 않은 arrayListTest2 - CountdownLatch")
+    public void countDownLatchTest() throws InterruptedException {
+        // given
+        ArrayList<String> list = new ArrayList<>();
+
+        CountDownLatch countDownLatch = new CountDownLatch(100);
+        final List<Thread> workers = Stream.generate(() -> new Thread(new Worker(list, countDownLatch)))
+                .limit(100)
+                .collect(Collectors.toList());
+
+        // when
+        workers.forEach(Thread::start);
+        countDownLatch.await();
+
+        // then
+        assertThat(list.size()).isNotEqualTo(4 * 100);
+    }
+
+}
+
+class Worker implements Runnable {
+    private final ArrayList<String>  list;
+    private final CountDownLatch countDownLatch;
+
+    public Worker(ArrayList<String> list, CountDownLatch countDownLatch) {
+        this.list = list;
+        this.countDownLatch = countDownLatch;
+    }
+
+    @Override
+    public void run() {
+        list.addAll(Arrays.asList("씻기", "옷입기", "출근하기", "퇴근하기"));
+        countDownLatch.countDown();
+    }
 }
