@@ -29,6 +29,7 @@ public class MyQueue<T> extends AbstractQueue<T> {
     /**
      * 용량 제한을 위반하지 않고 즉시 수행할 수 있는 경우 지정된 요소를 이 대기열에 삽입합니다.<br/>
      * 용량 제한 대기열을 사용할 때 일반적으로 이 방법을 추가하는 것이 좋으며 예외를 throw해야만 요소를 삽입하지 못할 수 있습니다.
+     * AbstractQueue 가 Queue의 add메서드를 구현하였음. add 메서드 호출할 때 offer 메서드를 호출함을 알아두자
      */
     @Override
     public boolean offer(T t) {

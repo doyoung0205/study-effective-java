@@ -1,6 +1,5 @@
 package chapter4.item20;
 
-import org.apache.commons.collections4.keyvalue.AbstractMapEntry;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
