@@ -32,6 +32,6 @@ public class FinalizerAttackTest {
         }
 
         System.gc();
-        Thread.sleep(10000L);
+        Thread.sleep(3000L);
     }
 }

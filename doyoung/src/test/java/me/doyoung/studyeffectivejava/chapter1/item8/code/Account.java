@@ -11,7 +11,7 @@ public class Account {
     }
 
     public void transfer(int amount, String to) {
-        System.out.printf("transfer %d from %s to %s", amount, this.name, to);
+        System.out.printf("transfer %d from %s to %s \n", amount, this.name, to);
     }
 
 }
