@@ -99,8 +99,6 @@
 - 따라서 해당 객체는 재정의해서 사용할 수 있고, 그렇기 때문에 신뢰하지 못하는 객체로 남게 되었다.
 - 주의할 사항은 불확실한 클라이언트로부터 해당 객체들을 받을 경우 객체 검증을 하도록 해야 한다(가변 객체일 수 있기 때문에, 방어적 복사를 하도록 하자)
 
-#### static
-
 --- 
 - 출처
   - [https://www.baeldung.com/java-least-common-multiple](https://www.baeldung.com/java-least-common-multiple)

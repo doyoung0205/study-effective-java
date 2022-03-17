@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class InterfaceTest {
 
     @Test
-    @DisplayName("defualt Method를 활용하면 메서드 구현 방법을 줄일 수 있다")
+    @DisplayName("default Method를 활용하면 메서드 구현 방법을 줄일 수 있다")
     public void useDefaultMethod() {
         // given
         MyCircle allowCircle = new MyCircle(Circle.allowsColors.get(0));
