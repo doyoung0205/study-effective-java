@@ -30,7 +30,7 @@
  - AbstractMap 
 
 #### 골격 구현을 사용한 구체 클래스
-  ```text
+  ```java
   public static List<Integer> intArrayAsList(int[] a) {
           Objects.requireNonNull(a);
           return new AbstractList<>() {
