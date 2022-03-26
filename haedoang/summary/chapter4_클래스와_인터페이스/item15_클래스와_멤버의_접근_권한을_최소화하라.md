@@ -40,15 +40,15 @@
 - 모듈이 의존하는 모듈들과 export할 내용을 정의해야 한다 (내보낼 내용이 모듈이 제공하는 오브젝트)
 
 #### base 모듈 구성
-![image_info](../images/module_structure.png)
+![image_info](../../images/module_structure.png)
 
 
 ##### 모듈이 적용된 jdk 비교하기
 - 최상위 구조가 package ex) `rt.jar`
-![image_info](../images/jdk_diff.png)
+![image_info](../../images/jdk_diff.png)
 
 - 최상위 구조가 module ex) `java.base`
-![image_info](../images/jdk8vsjdk9.png)
+![image_info](../../images/jdk8vsjdk9.png)
 
 ##### 정리 
  - 기존 패키지 구조 방식에서는 패키지 단위의 접근제어가 불가능하여 패키지 단위의 캡슐화를 할 수 없었다

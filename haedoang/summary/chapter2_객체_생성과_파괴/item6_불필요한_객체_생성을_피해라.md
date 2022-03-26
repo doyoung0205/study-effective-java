@@ -33,7 +33,7 @@
    - 스프링 프레임워크 HandlerAdapter 예시(아래 참고)
 
 #### 스프링 프레임워크 HandlerAdapter
-![image_info](../images/dispatcher-servlet.png)
+![image_info](../../images/dispatcher-servlet.png)
 (이미지 출처: [https://www.programmerall.com/article/9264417519/](https://www.programmerall.com/article/9264417519/))
 1) DispatcherServlet이 Http 요청을 수신한다.
 2) http요청을 처리할 handler를 찾기 위해 HandlerMapping을 가져온다
