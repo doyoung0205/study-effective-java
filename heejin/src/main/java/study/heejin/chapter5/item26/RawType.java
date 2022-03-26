@@ -1,4 +1,4 @@
-package study.heejin.chapter5;
+package study.heejin.chapter5.item26;
 
 import java.util.ArrayList;
 import java.util.List;
