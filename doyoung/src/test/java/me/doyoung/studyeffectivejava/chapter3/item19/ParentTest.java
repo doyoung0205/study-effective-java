@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-class PersonTest {
+class ParentTest {
 
     @Test
     void koreaPerson() {
