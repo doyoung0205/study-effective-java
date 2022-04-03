@@ -2,6 +2,7 @@ package me.doyoung.studyeffectivejava.chapter5.item29.technqiue2;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.EmptyStackException;
 
 // Object[]를 이용한 제네릭 Stack (170-174쪽)
