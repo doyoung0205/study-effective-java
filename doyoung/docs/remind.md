@@ -79,6 +79,20 @@ try (BufferedReader br = Files.newBufferedReader(Path.of(path))) {
 </summary>
 <div markdown="1">
 
+인스턴스 생성을 통제하는 클래스 중 하나이다.
+
+<code>new</code> 라는 단순한 이름 보다는 목적에 맞게 정적으로 이름을 가질 수 있다.
+
+항상 생성하지 않고 캐싱을 할수 있으며
+
+형변환을 위해 사용하기도 하며
+
+때로는 자식 타입을 반환 할 수 있다는 장점이 있다.
+
+하지만 생성자를 <code>private</code> 으로 할 경우 상속이 불가능 하다는 단점이 있다.
+
+from : 형변환 of : 여러개 매개변수받을 때 instance : 해당 클래스의 인스턴스 생성할 때 getType : 다른 객체를 생성 할 때
+
 </div>
 </details>
 
@@ -87,6 +101,13 @@ try (BufferedReader br = Files.newBufferedReader(Path.of(path))) {
 빌더패턴은 무엇인가?
 </summary>
 <div markdown="1">
+
+다양한 생성자가 필요함에 따라서 클라이언트가 생성자를 호출 할 때 매개변수가 헷갈릴 가능성이 높다.
+
+따라서 빌더 패턴을 필수적인 요소들을 빌더 생성자를 통해 생성한 뒤 일종의 프로퍼티를 setter 를 통해서 객체를 완성할 수 있다.
+
+하지만 필수적인 요소들이 많다면 처음과 같은 문제점이 발생할 수 있을 것이고 이는 스텝 빌더를 통해 해결할 수 있다.
+ 
 
 </div>
 </details>
@@ -97,18 +118,41 @@ try (BufferedReader br = Files.newBufferedReader(Path.of(path))) {
 </summary>
 <div markdown="1">
 
+객체 안에 배열과 같은 타입이 사용 되거나 캐싱이 있을 경우
+
+직접적으로 null 을 대입하지 않으면 계속해서 메모리가 누적되거나 
+캐싱또한 `linkedHashmap 의 removeEldestEntry` 같은 메소드를 통해서 주기적으로 캐싱된 데이터가 너무 누적되지 않도록 방지 해줘야 한다.
+
+
 </div>
 </details>
 
 <details>
 <summary>
-<code>finalizer attack</code> 이란 무엇인가?
+<code>finalizer</code> 의 문제점과 <code>finalizer attack</code> 이란 무엇인가?
 </summary>
 <div markdown="1">
 
+기본적으로 finalizer 의 문제점은 다음과 같습니다.
+
+- 첫째, 언제 실행이 될지 모릅니다.
+- 둘째, GC에 따라 실행이 되지 않을 수 있습니다.
+- 셋째, 예외가 발생되면 무시됩니다.
+
+상속받은 객체에서 finalizer 가 실행 될 때 예외가 발생하면 무시 되기 때문에
+
+부모 클래스의 불변식을 깬 코드를 작성할 수 있다.
+
+```
+@Override
+protected void finalize() throws Throwable {
+    this.transfer(100000, "dory");
+}
+```
+
+
 </div>
 </details>
-
 
 
 <details>
@@ -116,6 +160,12 @@ try (BufferedReader br = Files.newBufferedReader(Path.of(path))) {
 자원을 직접 명시하지 않고 의존 객체 주입을 받아서 사용하면 어떤 장점이 있는가?
 </summary>
 <div markdown="1">
+
+기존에 자원이 있는 상태에서 다른 자원이 필요할 때 명시된 구체적인 자원 하나로 모든 상황을 대처하기는 어렵다.
+
+따라서 의존 객체를 주입 받아 주입된 객체를 활용하는 것에만 관심을 가진 클래스로 만든다면
+
+의존 객체 주입이 유연성과 테스트 용이성을 개선해준다.
 
 </div>
 </details>
