@@ -22,7 +22,7 @@
 
 타입 매개변수가 제네릭 인 경우 List<String> 이나 List<Integer> 나 List 로 같다.
 
-이때 사용할 수 있는 방법이 슈퍼타입 토읔ㄴ이다.
+이때 사용할 수 있는 방법이 슈퍼타입토큰 이다.
 
 
 Spring 에서는 ParameterizedTypeReference 라는 클래스로 미리 구현해놓았다.
