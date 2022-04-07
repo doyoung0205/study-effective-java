@@ -17,7 +17,7 @@ class LinkedHashMapTest {
         // Creating the linked hashmap and implementing
         // removeEldestEntry() to MAX size
         LinkedHashMap<Integer, String> li_hash_map =
-                new LinkedHashMap<Integer, String>() {
+                new LinkedHashMap<>() {
                     protected boolean removeEldestEntry(Map.Entry<Integer, String> eldest) {
                         return size() > MAX;
                     }

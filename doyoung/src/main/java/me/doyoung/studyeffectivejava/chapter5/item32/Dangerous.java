@@ -1,5 +1,7 @@
 package me.doyoung.studyeffectivejava.chapter5.item32;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 // 제네릭 varargs 배열 매개변수에 값을 저장하는 것은 안전하지 않다. (191-192쪽)
