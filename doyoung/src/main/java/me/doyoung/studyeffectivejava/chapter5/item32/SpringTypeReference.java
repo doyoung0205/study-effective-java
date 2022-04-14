@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 public class SpringTypeReference {
+
+
     public static void main(String[] args) {
 
         // 왜 {} 를 붙이는가? -> SuperTypeToken 은 상속과 익명 클래스를 이용한다.
@@ -22,8 +24,11 @@ public class SpringTypeReference {
 
         final String url = "http://localhost:8080/users";
 //        final List<Map> users = rt.getForObject(url, List.class);
-        final List<SuperTypeTokenApplication.User> users = rt.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<SuperTypeTokenApplication.User>>() {
-        }).getBody();
+
+        final List<SuperTypeTokenApplication.User> users =
+                rt.exchange(url, HttpMethod.GET, null,
+                        new ParameterizedTypeReference<List<SuperTypeTokenApplication.User>>() {
+                        }).getBody();
 
         users.forEach(System.out::println);
     }
