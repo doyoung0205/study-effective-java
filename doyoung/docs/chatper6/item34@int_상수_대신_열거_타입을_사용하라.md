@@ -98,8 +98,51 @@ public enum Operation {
 
 ![img.png](item34.png)
 
+### 전략 열거 타입 패턴
 
 
+```
+switch(this) {  
+    case SATURDAY: case SUNDAY: // 주말
+        return basePay / 2;
+    default: 
+        return (minutesWorked - MINS_PER_SHIFT) * payRate / 2;
+}
+```
+
+
+만약 Enum 에 대해서 분류하는 switch 로직이 위와 같이 있다고 한다면
+새로운 상수가 추가되었을 경우에는 무조건 default 로직으로 타게 될 것이고, 추가한 이는 switch 로직에 대해서 고려해보지 않고 이는 오류로 발생할 가능성이 높다.
+
+따라서 switch 로직을 제거하고 switch 로 나눈 case 에 대해서 새로운 Enum 을 만드는 것이 전략 열거 타입 패턴이다.
+
+```
+enum PayType {
+    WEEKDAY {
+        int overtimePay(int minsWorked, int payRate) {
+            return minsWorked <= MINS_PER_SHIFT ? 0 :
+                    (minsWorked - MINS_PER_SHIFT) * payRate / 2;
+        }
+    },
+    WEEKEND {
+        int overtimePay(int minsWorked, int payRate) {
+            return minsWorked * payRate / 2;
+        }
+    };
+
+    abstract int overtimePay(int mins, int payRate);
+    private static final int MINS_PER_SHIFT = 8 * 60;
+
+    int pay(int minsWorked, int payRate) {
+        int basePay = minsWorked * payRate;
+        return basePay + overtimePay(minsWorked, payRate);
+    }
+}
+```
+
+이런식으로 작성하게 되면 새로운 상수가 추가할 때 기존에 switch 구문에 어디에 선택되게 할것인지를 선택하도록 하는 전략이 성공할 수 있다.
+
+따라서 switch 문 보다 복잡하지만 더 안전하고 유연하다.
 
 
 

@@ -20,8 +20,7 @@ enum PayrollDay {
     private final PayType payType;
 
     PayrollDay(PayType payType) { this.payType = payType; }
-    // PayrollDay() { this(PayType.WEEKDAY); } // (역자 노트) 원서 4쇄부터 삭제
-    
+
     int pay(int minutesWorked, int payRate) {
         return payType.pay(minutesWorked, payRate);
     }
