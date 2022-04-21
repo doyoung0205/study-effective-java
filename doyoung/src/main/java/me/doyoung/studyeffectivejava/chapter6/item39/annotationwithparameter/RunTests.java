@@ -1,6 +1,7 @@
 package me.doyoung.studyeffectivejava.chapter6.item39.annotationwithparameter;
 
-import effectivejava.chapter6.item39.markerannotation.Test;
+
+import me.doyoung.studyeffectivejava.chapter6.item39.markerannotation.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
