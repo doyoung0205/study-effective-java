@@ -25,18 +25,25 @@
   - 이 애너테이션을 사용하면 프로그래머가 Test 이름에 오타를 내거나 메서드 선언 외의 프로그램 요소에 달면 컴파일 오류를 내준다.
 
 
-- [마커 애너테이션을 처리하는 프로그램](../../src/main/java/study/heejin/chapter6/item39/RunTests.java)
+1. [마커 애너테이션을 사용한 프로그램](../../src/main/java/study/heejin/chapter6/item39/Sample.java)  
+   [마커 애너테이션을 처리하는 프로그램](../../src/main/java/study/heejin/chapter6/item39/RunTests.java)
   - 위 예제에서 `isAnnotationPresent` 메서드에서 예외가 발생하면 리플렉션 메커니즘이 `InvocationTargetException`으로 감싸서 다시 던진다.
-  - InvocationTargetException 외의 예외가 발생한다면 @Test 애너테이션을 잘못 사용했다는 뜻이다. 이제 특정 예외를 던져야만 성공하는 테스트를 지원하도록 해보자.
-  ```java
-  @Retention(RetentionPolicy.RUNTIME)
-  @Target(value = ElementType.METHOD)
-  public @interface ExceptionTest {
-      Class<? extends Throwable> value();
-  }
-  ```
-- [매개변수 하나짜리 애너테이션을 사용한 프로그램- 예외 케이스](../../src/main/java/study/heejin/chapter6/item39/SampleEx.java)
-- [배열 매개변수를 받는 애너테이션을 사용한 프로그램- 예외 케이스](../../src/main/java/study/heejin/chapter6/item39/SampleExArray.java)
+  - InvocationTargetException 외의 예외가 발생한다면 @Test 애너테이션을 잘못 사용했다는 뜻이다. 
+
+
+2. 특정 예외를 던져야만 성공하는 테스트
+    ```java
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target(value = ElementType.METHOD)
+    public @interface ExceptionTest {
+        Class<? extends Throwable> value();
+    }
+    ```
+    [1) 매개변수 하나짜리 애너테이션을 사용한 프로그램- 예외 케이스](../../src/main/java/study/heejin/chapter6/item39/SampleEx.java)  
+    [2) 배열 매개변수를 받는 애너테이션을 사용한 프로그램- 예외 케이스](../../src/main/java/study/heejin/chapter6/item39/SampleExArray.java)
+
+
+3. 반복가능한 애너테이션
 - 자바 8에서는 여러 개의 값을 받는 애너테이션을 배열 매개변수를 사용하는 대신 `@Repeatable` 메타애너테이션을 다는 방식으로 사용할 수 있다.
   ```java
   @Retention(RetentionPolicy.RUNTIME)
