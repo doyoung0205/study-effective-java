@@ -78,18 +78,9 @@
   ```
 
 
-
-
-
 ### 정리
 - 가변인수와 제네릭은 함께 사용할 때 주의해야 한다.
 - 타입 안전성이 깨지기 때문에 제네릭 varargs 배열 매개변수에 값을 저장하는 것은 안전하지 않다.
 - 메서드에 제네릭 varargs 매개변수를 사용하고자 한다면, 메서드가 타입 안전하지 확인하고 @SafeVarargs 애너테이션을 달아주자.
 
 <br>
-
----
-#### Reference
-
-- [Java - ScheduledThreadPoolExecutor 사용 방법](https://codechacha.com/ko/java-scheduled-thread-pool-executor)
-

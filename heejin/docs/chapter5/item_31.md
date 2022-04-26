@@ -81,5 +81,5 @@
 ---
 #### Reference
 
-- [Java - ScheduledThreadPoolExecutor 사용 방법](https://codechacha.com/ko/java-scheduled-thread-pool-executor)
+- [Java - ScheduledThreadPoolExecutor 사용 방법](https://codechacha.com/ko/java-scheduled-thread-pool-executor/)
 
