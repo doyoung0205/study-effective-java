@@ -22,10 +22,10 @@ public class TypeSafeFavorite {
     public static void main(String[] args) {
         TypeSafeFavorite f = new TypeSafeFavorite();
 
-        f.putFavorite(new TypeReference<Integer>() {}, 1);
-        f.putFavorite(new TypeReference<String>() {}, "haha");
-        f.putFavorite(new TypeReference<List<Integer>>() {}, Arrays.asList(1, 2, 3, 4, 5));
-        f.putFavorite(new TypeReference<List<String>>() {}, Arrays.asList("개", "고양이", "토끼"));
+        f.putFavorite(new TypeReference<>() {}, 1);
+        f.putFavorite(new TypeReference<>() {}, "haha");
+        f.putFavorite(new TypeReference<>() {}, Arrays.asList(1, 2, 3, 4, 5));
+        f.putFavorite(new TypeReference<>() {}, Arrays.asList("개", "고양이", "토끼"));
 
         System.out.println("type Integer = " + f.getFavorite(new TypeReference<Integer>() {}));
         System.out.println("type String = " + f.getFavorite(new TypeReference<String>() {}));
