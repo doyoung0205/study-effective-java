@@ -1,11 +1,8 @@
-package chapter7.iterm44;
+package chapter7.item44;
 
-import chapter7.item44.Animal;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 import java.util.function.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
