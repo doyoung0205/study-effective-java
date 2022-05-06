@@ -1,0 +1,8 @@
+staple
+petals
+apple
+banana
+orange
+tomato
+otamot
+amotot
