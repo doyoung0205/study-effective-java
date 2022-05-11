@@ -45,7 +45,7 @@ public class SpeedTest {
             assertThat(getFirstId(sortedComparableClasses)).isEqualTo(LAST_ID);
         };
 
-        SpeedCheckUtils.check(runnable);
+        SpeedCheckUtils.speedCheck(runnable);
     }
 
     @DisplayName("해당 클래스에 내장되어 있는 compare 메서드에 따른 sort 메서드를 사용할 경우")
@@ -60,7 +60,7 @@ public class SpeedTest {
             assertThat(getFirstId(comparableClasses)).isEqualTo(LAST_ID);
 
         };
-        SpeedCheckUtils.check(runnable);
+        SpeedCheckUtils.speedCheck(runnable);
 
     }
 
@@ -77,7 +77,7 @@ public class SpeedTest {
 
             assertThat(getFirstId(comparableClasses)).isEqualTo(LAST_ID);
         };
-        SpeedCheckUtils.check(runnable);
+        SpeedCheckUtils.speedCheck(runnable);
     }
 
     @Test

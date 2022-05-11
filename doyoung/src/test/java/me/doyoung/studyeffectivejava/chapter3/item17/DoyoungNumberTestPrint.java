@@ -7,7 +7,7 @@ class DoyoungNumberTestPrint {
 
     @Test
     void cache() {
-        SpeedCheckUtils.check(() -> {
+        SpeedCheckUtils.speedCheck(() -> {
             final DoyoungNumber number = DoyoungNumber.valueOf(1);
             number.add(3); // 3
             number.add(3); // 3
