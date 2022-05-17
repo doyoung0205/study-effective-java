@@ -1,6 +1,5 @@
-package chapter7.item45;
+package stream;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.stream.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,9 +19,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  * fileName : Tutorial
  * author : haedoang
  * date : 2022-05-03
- * description :
+ * description : <br/>
+ * <a href="https://www.baeldung.com/java-8-streams">https://www.baeldung.com/java-8-streams</a>
  */
-public class BasicTest {
+public class StreamApiTutorial {
 
     @Test
     @DisplayName("stream 생성하기")
@@ -144,4 +145,8 @@ public class BasicTest {
         // then
         assertThat(streamOfStrings.collect(Collectors.joining())).isEqualTo("두아리파");
     }
+
+    //TODO Referencing a Stream
+    //https://www.baeldung.com/java-8-streams
+
 }
