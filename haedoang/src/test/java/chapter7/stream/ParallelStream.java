@@ -1,4 +1,4 @@
-package stream;
+package chapter7.stream;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
