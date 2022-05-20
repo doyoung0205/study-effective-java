@@ -42,7 +42,7 @@
 #### 자바 5에서 도입된 오토박싱과 제네릭의 영향으로 다중정의 메서드 선택시 주의해야 한다.
 - [List 인터페이스의 remove 예제](../../src/main/java/study/heejin/chapter8/item52/SetList.java)
   - 위의 예에서 `List<E>` 인터페이스가 `remove(Object)`와 `remove(int)`를 다중정의 했기 때문에 `Integer로` 형변환을 해줘야한다.
-- 제네릭이 도입되기 전인 자바 4까지의 List에서는 Object와 int가 근복적으로 달라서 문제가 없었다.
+- 제네릭이 도입되기 전인 자바 4까지의 List에서는 `Object`와 `int`가 근복적으로 달라서 문제가 없었다.
 - 그런데 제네릭과 오토박싱이 등장하면서 두 메서드의 매개변수 타입이 근본적으로 다르지 않게 되었다.
 
 
@@ -55,10 +55,10 @@
     - 이 말은 서로 다른 함수형 인터페이스라도 서로 근본적으로 다르지 않다는 뜻이다.
 
 
-#### 이미 만들어진 클래스에 같은 기능을 하는 다중정의 메서드가 추가되어야 한다면 포워드 방식을 사용ㅎ나다.
+#### 이미 만들어진 클래스에 같은 기능을 하는 다중정의 메서드가 추가되어야 한다면 포워드 방식을 사용한다.
   - 자바 5에서 StringBuffer, StringBuilder, String, CharBuffer 등 비슷한 부류의 타입을 위한 공통 인터페이스로 CharSequence가 등장하게 되어 다중정의 하게 되었다.
   - 이렇게 기능이 동일한 경우에는 일반적으로, 더 특수한 다중정의 메서드에서 덜 특수한 다중정의 메서드로 포워드 시킨다.
-  - String 클래스의 contentEquals(StringBuffer)와 contentEquals(CharSequence)
+  - String 클래스의 `contentEquals(StringBuffer)`와 `contentEquals(CharSequence)`
     ```java
     public boolean contentEquals(StringBuffer sb) {
         return contentEquals((CharSequence)sb);
