@@ -31,4 +31,4 @@ exec.submit((Runnable) System.out::println); // Runnable, Callable 이 다중정
 
 ### 정리
 - 프로그래밍 언어가 다중정의를 허용한다고 해서 꼭 활용하라는 뜻은 아니다. 
-- 매개변수 ㅅ가 같을 때는 다중정의를 피하는 게 좋다
+- 매개변수 개수가 같을 때는 다중정의를 피하는 게 좋다
