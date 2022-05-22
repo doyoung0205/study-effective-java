@@ -19,6 +19,7 @@ class CollectionClassifierTest {
     @Test
     void classifyTest() {
 
+
         Collection<?>[] collections = {
                 new HashSet<String>(),
                 new ArrayList<BigInteger>(),
@@ -28,7 +29,6 @@ class CollectionClassifierTest {
         for (Collection<?> collection : collections) {
             assertThat(classify(collection)).isEqualTo("그 외");
         }
-
     }
 
     @Test
