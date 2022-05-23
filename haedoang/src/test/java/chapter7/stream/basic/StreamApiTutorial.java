@@ -1,4 +1,4 @@
-package chapter7.stream;
+package chapter7.stream.basic;
 
 import com.google.common.collect.Sets;
 import org.junit.jupiter.api.DisplayName;
