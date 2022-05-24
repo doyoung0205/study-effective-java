@@ -15,7 +15,6 @@ public class Member {
         this.name = name;
         this.age = age;
     }
-
     public static Member valueOf(String name, int age) {
         return new Member(name, age);
     }
