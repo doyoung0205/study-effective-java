@@ -1,4 +1,4 @@
-package chapter7.stream.basic;
+package chapter7.stream.basics;
 
 import com.google.common.collect.Sets;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * description : <br/>
  * <a href="https://www.baeldung.com/java-8-streams">https://www.baeldung.com/java-8-streams</a>
  */
-public class StreamApiTutorial {
+public class StreamApiTutorialTest {
 
     @Test
     @DisplayName("stream 생성하기")

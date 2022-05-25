@@ -1,4 +1,4 @@
-package chapter7.stream.basic;
+package chapter7.stream.basics;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * description : <br/>
  * <a href="https://www.baeldung.com/java-when-to-use-parallel-stream">https://www.baeldung.com/java-when-to-use-parallel-stream</a>
  */
-public class ParallelStream {
+public class ParallelStreamTest {
     public static void main(String[] args) throws IOException {
         /** 순차스트림 (Sequential Streams) */
         System.out.println("-------- 순차 스트림 start--------");
