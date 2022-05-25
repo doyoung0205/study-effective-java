@@ -9,11 +9,11 @@
 <br>
 
 ## 옵셔널 반환은 신중히 하라
-- 메서드가 특정 조건에서 값을 반환할 수 없을 때 취할 수 있는 방법은 크게 2가지 있었다.  
-  - 1  ) 예외를 던진다.
-    - 예외는 진짜 예외 적인 상황에서만 사용해야 하며 _(→ item 69)_, 예외를 생성할 때 스택 추적 전체를 캡쳐해야 하므로 비용도 만만치 않다.
-  - 2  ) `null`을 반환한다.
-    - `null`을 반환할 수 있는 메서드는 별도의 null 처리 코드를 추가하지 않으면, 언젠가 NullpointExcetion이 발생할 수 있다.
+메서드가 특정 조건에서 값을 반환할 수 없을 때 취할 수 있는 방법은 크게 2가지 있었다.  
+1. 예외를 던진다.  
+예외는 진짜 예외 적인 상황에서만 사용해야 하며 _(→ item 69)_, 예외를 생성할 때 스택 추적 전체를 캡쳐해야 하므로 비용도 만만치 않다.  
+2. `null`을 반환한다.  
+`null`을 반환할 수 있는 메서드는 별도의 null 처리 코드를 추가하지 않으면, 언젠가 NullpointExcetion이 발생할 수 있다.
 
 - 자바 8에서는 옵셔널이 추가되었다.
   - `Optional<T>`는 `null`이 아닌 `T` 타임 참조를 하나 담거나, 혹은 아무것도 담지 않을 수 있다.
@@ -27,20 +27,20 @@
 - Optional을 반환하는 메서드에서는 절대 null을 반환하지 말자. 이는 옵셔널을 도입한 취지를 무시하는 행위이다.
   - `Optional.of(value)` 에 null을 넣으면 NullpointException을 던진다.
   - null 값도 허용하는 옵셔널을 만들려면 `Optional.ofNullable(value)`를 사용하면 된다.
-  ```java
-  public static <E extends Comparable<E>> Optional<E> maxOptional(Collection<E> c) {
-        if (c.isEmpty()) {
-            return Optional.empty();
-        }
-        E result = null;
-        for (E e : c) {
-            if (result == null || e.compareTo(result) > 0) {
-                result = Objects.requireNonNull(e);
-            }
-        }
-        return Optional.of(result);
-    }
-  ```
+    ```java
+    public static <E extends Comparable<E>> Optional<E> maxOptional(Collection<E> c) {
+          if (c.isEmpty()) {
+              return Optional.empty();
+          }
+          E result = null;
+          for (E e : c) {
+              if (result == null || e.compareTo(result) > 0) {
+                  result = Objects.requireNonNull(e);
+              }
+          }
+          return Optional.of(result);
+      }
+    ```
 
 - 스트림의 종단 연산 중 상당수가 Optional을 반환한다.
   ```java
@@ -56,6 +56,7 @@
   - 비검사 예외를 던지거나 null을 반환하면 클라이언트에서 그 사실을 인지하지 못했을 때 문제가 발생한다.
   - 하지만 검사 예외를 던지면 클라이언트에서 이에 대처하는 코드를 작성해야 한다.
 
+
 - 마찬가지로 메서드에서 Optional을 반환한다면 이에 대처할 수 있다.
   - 기본 값을 설정할 수 있다.  
     `String lastWordInLexicon = max(words).orElse("단어 없음");`
@@ -64,9 +65,10 @@
   - 곧 바로 값을 꺼내 사용할 수 있다.  
     `Element lastNobleGas = max(Elements.NOBLE_GASES).get();`
  
-- 기본값을 설정하는 비용이 아주 커서 부담이 되는 경우에는 orElseGet()을 사용하면 초기 설정 비용을 낮출 수 있다. 
-  - Supplier<T>를 인수로 받는 orElseGet을 사용하면, 값이 처음 필요할 때 Supplier<T>를 사용해 생성하므로 초기 설정 비용을 낮출 수 있다.
-  - `isPresent` 메서드를 사용할 때, 상당수는 Supplier<T>를 사용한 메서드로 대체할 수 있다.
+
+- 기본값을 설정하는 비용이 아주 커서 부담이 되는 경우에는 `orElseGet`을 사용하면 초기 설정 비용을 낮출 수 있다. 
+  - `Supplier<T>`를 인수로 받는 `orElseGet`을 사용하면, 값이 처음 필요할 때 `Supplier<T>`를 사용해 생성하므로 초기 설정 비용을 낮출 수 있다.
+  - `isPresent` 메서드를 사용할 때, 상당수는 `Supplier<T>`를 사용한 메서드로 대체할 수 있다.
     ```java
     // isPresent 를 적절하지 못하게 사용한 예
     System.out.println("부모 PID: " +
@@ -79,6 +81,7 @@
     );
     ```
     
+
 - 스트림을 사용할 때, Optional의 값이 채워져 있는 것들을 뽑아서 사용할 수 있다.
   - 자바 8에서는 다음과 같이 구현 가능
     ```java
