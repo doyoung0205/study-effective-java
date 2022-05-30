@@ -44,11 +44,8 @@ public class Item55Test {
     }
 
     @Test
-    @DisplayName("옵셔널을 사용한 기본값 테스트")
+    @DisplayName("값이 존재하지 않을 때 기본값 테스트")
     public void optionalWithDefaultValue() {
-        // given
-        String nullValue = null;
-
         // when
         String actual = (String) Optional.empty().orElse("null");
 
@@ -57,7 +54,7 @@ public class Item55Test {
     }
 
     @Test
-    @DisplayName("옵셔널을 사용하면 값이 없는 경우 원하는 예외를 던질 수 있음")
+    @DisplayName("값이 없는 경우 원하는 예외를 던질 수 있음")
     public void optionalThrowCustomException() {
         // then
         assertThatThrownBy(() -> Optional.empty()
@@ -67,7 +64,7 @@ public class Item55Test {
     }
 
     @Test
-    @DisplayName("옵셔널 get은 값을 보장한다")
+    @DisplayName("값이 있음을 보장할 경우 테스트")
     public void optionalGet() {
         // given
         String actual = Optional.of("안녕").get();
