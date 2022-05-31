@@ -2,8 +2,8 @@
 
 [아이템 58. 전통적인 for문 보다는 for-each문을 사용하라](#전통적인-for문-보다는-foreach문을-사용하라)  
 [- 전통적인 for 문의 단점](#전통적인-for-문의-단점)   
-[- for-each 문](#foreach-문)  
-[- for-each 문을 사용하지 못하는 경우](#foreach-문을-사용하지-못하는-경우)  
+[- for-each 문](#for-each-문)  
+[- for-each 문을 사용하지 못하는 경우](#for-each-문을-사용하지-못하는-경우)  
 [- Iterable](#iterable)  
 [- 정리](#정리)  
 
