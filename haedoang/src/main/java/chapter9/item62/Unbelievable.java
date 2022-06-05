@@ -1,4 +1,4 @@
-package chapter9;
+package chapter9.item62;
 
 /**
  * author : haedoang

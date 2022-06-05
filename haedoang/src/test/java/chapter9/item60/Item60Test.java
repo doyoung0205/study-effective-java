@@ -1,4 +1,4 @@
-package chapter9;
+package chapter9.item60;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -47,6 +47,5 @@ public class Item60Test {
         // then
         assertThat(funds.equals(BigDecimal.valueOf(.40)))
                 .as("정확한 값 표현이 필요한 경우 사용된다");
-
     }
 }
