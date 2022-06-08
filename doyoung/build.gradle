@@ -25,6 +25,9 @@ dependencies {
     //테스트에서 lombok 사용
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+
+    implementation group: 'org.javamoney', name: 'moneta', version: '1.4.2'
+
 }
 
 test {
