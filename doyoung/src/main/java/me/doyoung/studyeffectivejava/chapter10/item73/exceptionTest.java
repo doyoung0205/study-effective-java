@@ -1,4 +1,4 @@
-bpackage me.doyoung.studyeffectivejava.chapter10.item73;
+package me.doyoung.studyeffectivejava.chapter10.item73;
 
 import lombok.Getter;
 
