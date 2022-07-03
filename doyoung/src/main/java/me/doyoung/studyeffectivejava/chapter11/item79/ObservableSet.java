@@ -1,5 +1,6 @@
 package me.doyoung.studyeffectivejava.chapter11.item79;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -18,13 +19,13 @@ public class ObservableSet<E> extends ForwardingSet<E> {
 //            observers.add(observer);
 //        }
 //    }
-//
+
 //    public boolean removeObserver(SetObserver<E> observer) {
 //        synchronized(observers) {
 //            return observers.remove(observer);
 //        }
 //    }
-
+//
 //    private void notifyElementAdded(E element) {
 //        synchronized(observers) {
 //            for (SetObserver<E> observer : observers)
