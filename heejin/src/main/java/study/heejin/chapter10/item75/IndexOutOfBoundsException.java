@@ -1,4 +1,4 @@
-package study.heejin.chapter10;
+package study.heejin.chapter10.item75;
 
 public class IndexOutOfBoundsException extends RuntimeException {
     private final int lowerBound;

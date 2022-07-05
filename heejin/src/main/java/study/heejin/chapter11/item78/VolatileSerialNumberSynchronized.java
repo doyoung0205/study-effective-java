@@ -1,4 +1,4 @@
-package study.heejin.chapter11;
+package study.heejin.chapter11.item78;
 
 /**
  * generateSerialNumber 메서드에 synchronized 한정자를 붙이면 동시에 호출해도 서로 간섭하지 않고 이전 호출에서 변경한 값을 읽게 된다.

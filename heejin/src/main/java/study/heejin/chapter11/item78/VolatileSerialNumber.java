@@ -1,4 +1,4 @@
-package study.heejin.chapter11;
+package study.heejin.chapter11.item78;
 
 /**
  * 일련번호를 생성할 의도로 작성한 아래의 메서드는 동기화하지 않더라도 불변식을 보호할 수 있어 보인다.

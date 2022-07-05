@@ -1,4 +1,4 @@
-package study.heejin.chapter11;
+package study.heejin.chapter11.item78;
 
 import java.util.concurrent.TimeUnit;
 
