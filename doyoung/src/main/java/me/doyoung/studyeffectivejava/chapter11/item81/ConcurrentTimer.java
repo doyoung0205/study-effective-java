@@ -1,5 +1,8 @@
 package me.doyoung.studyeffectivejava.chapter11.item81;
 
+import java.util.Collections;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
@@ -11,6 +14,8 @@ public class ConcurrentTimer {
     } // 인스턴스 생성 불가
 
     public static void main(String[] args) throws InterruptedException {
+//        Collections.synchronizedMap(new ConcurrentHashMap<>());
+
         final ExecutorService executorService = Executors.newFixedThreadPool(1);
         final long result = time(executorService, 1, () -> System.out.println("RUN"));
         System.out.println("result = " + result);
